@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_media_previous"
+            app:tint="@color/text_primary"/>
+
+        <!-- Progress -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_inactive"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="🌿"
+            android:textSize="64sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Healthy Skin Journey"
+            android:textColor="@color/text_primary"
+            android:textSize="28sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Let's personalize your skincare routine."
+            android:textColor="@color/text_secondary"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Do you currently have a skincare routine?"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+
+        <RadioGroup
+            android:id="@+id/rgRoutine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"/>
+
+            <RadioButton
+                android:id="@+id/rbNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"/>
+
+            <RadioButton
+                android:id="@+id/rbHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Help me create one"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Skin Type"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+
+        <RadioGroup
+            android:id="@+id/rgSkinType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbOily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Oily"/>
+
+            <RadioButton
+                android:id="@+id/rbDry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dry"/>
+
+            <RadioButton
+                android:id="@+id/rbCombination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Combination"/>
+
+            <RadioButton
+                android:id="@+id/rbSensitive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sensitive"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Routine Steps"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+
+        <CheckBox
+            android:id="@+id/cbCleanser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cleanser"/>
+
+        <CheckBox
+            android:id="@+id/cbToner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Toner"/>
+
+        <CheckBox
+            android:id="@+id/cbSerum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Serum"/>
+
+        <CheckBox
+            android:id="@+id/cbMoisturizer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Moisturizer"/>
+
+        <CheckBox
+            android:id="@+id/cbSunscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunscreen"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Reminder"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+
+        <RadioGroup
+            android:id="@+id/rgReminder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbMorning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Morning"/>
+
+            <RadioButton
+                android:id="@+id/rbEvening"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Evening"/>
+
+            <RadioButton
+                android:id="@+id/rbBoth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Morning &amp; Evening"/>
+
+        </RadioGroup>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="#E8F5E9">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="18dp"
+                android:text="🌱 CLOMI Tip&#10;&#10;Healthy skin comes from consistency, not expensive products."
+                android:textColor="@color/text_primary"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContinue"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="Continue →"
+            android:textAllCaps="false"
+            android:textSize="17sp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="18dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

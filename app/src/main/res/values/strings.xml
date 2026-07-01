@@ -1,0 +1,50 @@
+<resources>
+
+    <string name="app_name">CLOMI</string>
+
+    <string name="app_tagline">Close To Me</string>
+
+    <string name="welcome_title">Welcome to CLOMI</string>
+
+    <string name="start_journey">Start My Journey</string>
+
+    <!-- Lifestyle Activity -->
+    <string name="back">Back</string>
+    <string name="lifestyle_title">Let\'s Get To Know You</string>
+    <string name="lifestyle_subtitle">Help CLOMI personalize your wellness journey.</string>
+    <string name="gender_label">Gender</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_prefer">Prefer not to say</string>
+    <string name="activity_label">Activity Level</string>
+    <string name="activity_not_active">Not Very Active</string>
+    <string name="activity_light">Lightly Active</string>
+    <string name="activity_moderate">Moderately Active</string>
+    <string name="activity_very">Very Active</string>
+    <string name="goal_label">Main Goal</string>
+    <string name="goal_habit">Build Healthy Habits</string>
+    <string name="goal_care">Improve Self-Care</string>
+    <string name="goal_wellness">Improve Wellness</string>
+    <string name="goal_productivity">Increase Productivity</string>
+    <string name="goal_stress">Manage Stress</string>
+    <string name="lifestyle_tip">🌱 CLOMI Tip\n\nThe more we know about your lifestyle, the better we can personalize your habits and AI suggestions.</string>
+    <string name="continue_btn">Continue →</string>
+
+    <!-- Wellness Setup Activity -->
+    <string name="wellness_title">Your Mental Wellness</string>
+    <string name="wellness_subtitle">Let\'s personalize your emotional wellness.</string>
+    <string name="mood_freq_label">Mood Check Frequency</string>
+    <string name="mood_daily">Daily</string>
+    <string name="mood_weekly">Weekly</string>
+    <string name="mood_needed">Only When Needed</string>
+    <string name="motivation_switch">Daily Motivational Messages</string>
+    <string name="improve_label">Areas You Want To Improve</string>
+    <string name="improve_confidence">Confidence</string>
+    <string name="improve_stress">Stress Management</string>
+    <string name="improve_productivity">Productivity</string>
+    <string name="improve_self_care">Self-Care</string>
+    <string name="improve_mental">Mental Wellness</string>
+    <string name="wellness_tip">🌱 CLOMI Tip\n\nSmall positive habits every day can create a healthier and happier life.</string>
+    <string name="finish_setup">Finish Setup →</string>
+
+</resources>

@@ -1,0 +1,58 @@
+package com.example.clomi.preferences;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
+public class ClomiPreferenceManager {
+
+    private static final String PREF_NAME = "CLOMI_PREFS";
+
+    private final SharedPreferences preferences;
+    private final SharedPreferences.Editor editor;
+
+    public ClomiPreferenceManager(Context context) {
+        preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        editor = preferences.edit();
+    }
+
+    public void putString(String key, String value) {
+        editor.putString(key, value);
+        editor.apply();
+    }
+
+    public String getString(String key) {
+        return preferences.getString(key, "");
+    }
+
+    public void putInt(String key, int value) {
+        editor.putInt(key, value);
+        editor.apply();
+    }
+
+    public int getInt(String key) {
+        return preferences.getInt(key, 0);
+    }
+
+    // ===========================
+    // Boolean
+    // ===========================
+
+    public void putBoolean(String key, boolean value) {
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
+
+    public boolean getBoolean(String key) {
+        return preferences.getBoolean(key, false);
+    }
+
+    public void remove(String key) {
+        editor.remove(key);
+        editor.apply();
+    }
+
+    public void clear() {
+        editor.clear();
+        editor.apply();
+    }
+}
