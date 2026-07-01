@@ -29,16 +29,20 @@ public class PreferenceKeys {
 
     // Period
     public static final String PERIOD_ENABLED = "PERIOD_ENABLED";
+    public static final String LAST_PERIOD_DATE = "LAST_PERIOD_DATE";
     public static final String CYCLE_LENGTH = "CYCLE_LENGTH";
     public static final String PERIOD_LENGTH = "PERIOD_LENGTH";
 
     // Skincare
     public static final String SKIN_TYPE = "SKIN_TYPE";
     public static final String SKINCARE_REMINDER = "SKINCARE_REMINDER";
+    public static final String SKINCARE_ROUTINE = "SKINCARE_ROUTINE";
 
     // Wellness
     public static final String MOOD_CHECK = "MOOD_CHECK";
+    public static final String MOOD_FREQUENCY = "MOOD_FREQUENCY";
     public static final String MOTIVATION_ENABLED = "MOTIVATION_ENABLED";
+    public static final String WELLNESS_GOALS = "WELLNESS_GOALS";
 
     // Progress
     public static final String XP = "XP";

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.clomi.R;
+import com.example.clomi.preferences.ClomiPreferenceManager;
+import com.example.clomi.preferences.PreferenceKeys;
 import com.google.android.material.button.MaterialButton;
 
 public class WellnessSetupActivity extends AppCompatActivity {
@@ -28,16 +31,17 @@ public class WellnessSetupActivity extends AppCompatActivity {
     private CheckBox cbSelfCare;
     private CheckBox cbMental;
 
+    private ClomiPreferenceManager preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wellness_setup);
 
+        preferences = new ClomiPreferenceManager(this);
+
         initializeViews();
-
-        btnBack.setOnClickListener(v -> finish());
-
-        btnFinish.setOnClickListener(v -> validateInputs());
+        setupListeners();
     }
 
     private void initializeViews() {
@@ -56,7 +60,14 @@ public class WellnessSetupActivity extends AppCompatActivity {
         cbMental = findViewById(R.id.cbMental);
     }
 
-    private void validateInputs() {
+    private void setupListeners() {
+
+        btnBack.setOnClickListener(v -> finish());
+
+        btnFinish.setOnClickListener(v -> validateAndContinue());
+    }
+
+    private void validateAndContinue() {
 
         if (rgMoodFrequency.getCheckedRadioButtonId() == -1) {
 
@@ -84,12 +95,61 @@ public class WellnessSetupActivity extends AppCompatActivity {
             return;
         }
 
+        saveData();
+
+        navigateNext();
+    }
+
+    private void saveData() {
+
+        RadioButton selectedMood =
+                findViewById(rgMoodFrequency.getCheckedRadioButtonId());
+
+        preferences.putString(
+                PreferenceKeys.MOOD_FREQUENCY,
+                selectedMood.getText().toString()
+        );
+
+        preferences.putBoolean(
+                PreferenceKeys.MOTIVATION_ENABLED,
+                switchMotivation.isChecked()
+        );
+
+        StringBuilder goals = new StringBuilder();
+
+        if (cbConfidence.isChecked()) {
+            goals.append("Confidence,");
+        }
+
+        if (cbStress.isChecked()) {
+            goals.append("Stress,");
+        }
+
+        if (cbProductivity.isChecked()) {
+            goals.append("Productivity,");
+        }
+
+        if (cbSelfCare.isChecked()) {
+            goals.append("Self Care,");
+        }
+
+        if (cbMental.isChecked()) {
+            goals.append("Mental Health,");
+        }
+
+        preferences.putString(
+                PreferenceKeys.WELLNESS_GOALS,
+                goals.toString()
+        );
+    }
+
+    private void navigateNext() {
+
         Intent intent = new Intent(
                 WellnessSetupActivity.this,
                 SetupCompleteActivity.class
         );
 
         startActivity(intent);
-        finish();
     }
 }

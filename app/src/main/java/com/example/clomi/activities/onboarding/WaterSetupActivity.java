@@ -120,6 +120,5 @@ public class WaterSetupActivity extends AppCompatActivity {
         );
 
         startActivity(intent);
-        finish();
     }
 }

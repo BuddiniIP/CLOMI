@@ -3,12 +3,15 @@ package com.example.clomi.activities.onboarding;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.clomi.R;
+import com.example.clomi.preferences.ClomiPreferenceManager;
+import com.example.clomi.preferences.PreferenceKeys;
 import com.google.android.material.button.MaterialButton;
 
 public class SkincareSetupActivity extends AppCompatActivity {
@@ -20,16 +23,17 @@ public class SkincareSetupActivity extends AppCompatActivity {
     private RadioGroup rgSkinType;
     private RadioGroup rgReminder;
 
+    private ClomiPreferenceManager preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skincare_setup);
 
+        preferences = new ClomiPreferenceManager(this);
+
         initializeViews();
-
-        btnBack.setOnClickListener(v -> finish());
-
-        btnContinue.setOnClickListener(v -> validateInputs());
+        setupListeners();
     }
 
     private void initializeViews() {
@@ -40,10 +44,16 @@ public class SkincareSetupActivity extends AppCompatActivity {
         rgRoutine = findViewById(R.id.rgRoutine);
         rgSkinType = findViewById(R.id.rgSkinType);
         rgReminder = findViewById(R.id.rgReminder);
-
     }
 
-    private void validateInputs() {
+    private void setupListeners() {
+
+        btnBack.setOnClickListener(v -> finish());
+
+        btnContinue.setOnClickListener(v -> validateAndContinue());
+    }
+
+    private void validateAndContinue() {
 
         if (rgRoutine.getCheckedRadioButtonId() == -1) {
 
@@ -75,12 +85,45 @@ public class SkincareSetupActivity extends AppCompatActivity {
             return;
         }
 
+        saveData();
+
+        navigateNext();
+    }
+
+    private void saveData() {
+
+        RadioButton selectedRoutine =
+                findViewById(rgRoutine.getCheckedRadioButtonId());
+
+        RadioButton selectedSkinType =
+                findViewById(rgSkinType.getCheckedRadioButtonId());
+
+        RadioButton selectedReminder =
+                findViewById(rgReminder.getCheckedRadioButtonId());
+
+        preferences.putString(
+                PreferenceKeys.SKINCARE_ROUTINE,
+                selectedRoutine.getText().toString()
+        );
+
+        preferences.putString(
+                PreferenceKeys.SKIN_TYPE,
+                selectedSkinType.getText().toString()
+        );
+
+        preferences.putString(
+                PreferenceKeys.SKINCARE_REMINDER,
+                selectedReminder.getText().toString()
+        );
+    }
+
+    private void navigateNext() {
+
         Intent intent = new Intent(
                 SkincareSetupActivity.this,
                 WellnessSetupActivity.class
         );
 
         startActivity(intent);
-        finish();
     }
 }

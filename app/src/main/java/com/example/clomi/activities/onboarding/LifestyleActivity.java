@@ -99,6 +99,5 @@ public class LifestyleActivity extends AppCompatActivity {
         );
 
         startActivity(intent);
-        finish();
     }
 }

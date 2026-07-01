@@ -27,8 +27,6 @@ public class SetupCompleteActivity extends AppCompatActivity {
             );
 
             startActivity(intent);
-            finish();
-
         });
 
     }
