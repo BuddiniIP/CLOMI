@@ -11,6 +11,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CLOMI">
         <activity
+            android:name=".manager.PlantManager"
+            android:exported="false" />
+        <activity
+            android:name=".activities.plant.PlantActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.habits.HabitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.habits.HabitsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.habits.PlantActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.reports.ProgressActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.dashboard.DashboardActivity"
             android:exported="false" />
         <activity

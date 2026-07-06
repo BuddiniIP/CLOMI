@@ -15,6 +15,10 @@ public class ClomiPreferenceManager {
         editor = preferences.edit();
     }
 
+    public String getString(String key, String defaultValue) {
+        return preferences.getString(key, defaultValue);
+    }
+
     public void putString(String key, String value) {
         editor.putString(key, value);
         editor.apply();
