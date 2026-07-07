@@ -33,21 +33,6 @@ CLOMI helps users build healthy habits through personalized tracking, daily goal
 
 Currently under active development.
 
-### Completed
-
-- Splash Screen
-- Welcome Screen
-- Onboarding Flow
-- User Preferences
-- GitHub Integration
-
-### In Progress
-
-- Dashboard
-- Habit Tracking
-- XP System
-- Plant Companion
-
 ## 👨‍💻 Developers
 
 Developed by **Buddini Perera,Kavindi Upeksha,Isumi Livisarani**
