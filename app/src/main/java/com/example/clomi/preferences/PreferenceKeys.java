@@ -15,11 +15,10 @@ public class PreferenceKeys {
 
     // Lifestyle
     public static final String ACTIVITY_LEVEL = "ACTIVITY_LEVEL";
-    public static final String MAIN_GOAL = "MAIN_GOAL";
+    public static final String MAIN_GOALS = "MAIN_GOALS";
 
     // Water
     public static final String WATER_GOAL = "WATER_GOAL";
-    public static final String EXERCISE_LEVEL = "EXERCISE_LEVEL";
 
     // Sleep
     public static final String SLEEP_HOURS = "SLEEP_HOURS";
@@ -40,9 +39,7 @@ public class PreferenceKeys {
 
     // Wellness
     public static final String MOOD_CHECK = "MOOD_CHECK";
-    public static final String MOOD_FREQUENCY = "MOOD_FREQUENCY";
     public static final String MOTIVATION_ENABLED = "MOTIVATION_ENABLED";
-    public static final String WELLNESS_GOALS = "WELLNESS_GOALS";
 
     // Progress
     public static final String XP = "XP";

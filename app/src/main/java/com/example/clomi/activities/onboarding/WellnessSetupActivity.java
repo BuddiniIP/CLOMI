@@ -2,7 +2,6 @@ package com.example.clomi.activities.onboarding;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -19,17 +18,10 @@ import com.google.android.material.button.MaterialButton;
 public class WellnessSetupActivity extends AppCompatActivity {
 
     private ImageButton btnBack;
-    private MaterialButton btnFinish;
+    private MaterialButton btnContinue;
 
-    private RadioGroup rgMoodFrequency;
-
+    private RadioGroup rgMoodCheck;
     private SwitchCompat switchMotivation;
-
-    private CheckBox cbConfidence;
-    private CheckBox cbStress;
-    private CheckBox cbProductivity;
-    private CheckBox cbSelfCare;
-    private CheckBox cbMental;
 
     private ClomiPreferenceManager preferences;
 
@@ -47,48 +39,26 @@ public class WellnessSetupActivity extends AppCompatActivity {
     private void initializeViews() {
 
         btnBack = findViewById(R.id.btnBack);
-        btnFinish = findViewById(R.id.btnFinish);
+        btnContinue = findViewById(R.id.btnContinue);
 
-        rgMoodFrequency = findViewById(R.id.rgMoodFrequency);
-
+        rgMoodCheck = findViewById(R.id.rgMoodCheck);
         switchMotivation = findViewById(R.id.switchMotivation);
-
-        cbConfidence = findViewById(R.id.cbConfidence);
-        cbStress = findViewById(R.id.cbStress);
-        cbProductivity = findViewById(R.id.cbProductivity);
-        cbSelfCare = findViewById(R.id.cbSelfCare);
-        cbMental = findViewById(R.id.cbMental);
     }
 
     private void setupListeners() {
 
         btnBack.setOnClickListener(v -> finish());
 
-        btnFinish.setOnClickListener(v -> validateAndContinue());
+        btnContinue.setOnClickListener(v -> validateAndContinue());
     }
 
     private void validateAndContinue() {
 
-        if (rgMoodFrequency.getCheckedRadioButtonId() == -1) {
+        if (rgMoodCheck.getCheckedRadioButtonId() == -1) {
 
             Toast.makeText(
                     this,
-                    "Please select your mood check frequency.",
-                    Toast.LENGTH_SHORT
-            ).show();
-
-            return;
-        }
-
-        if (!cbConfidence.isChecked()
-                && !cbStress.isChecked()
-                && !cbProductivity.isChecked()
-                && !cbSelfCare.isChecked()
-                && !cbMental.isChecked()) {
-
-            Toast.makeText(
-                    this,
-                    "Please select at least one area to improve.",
+                    "Please choose an option.",
                     Toast.LENGTH_SHORT
             ).show();
 
@@ -97,16 +67,41 @@ public class WellnessSetupActivity extends AppCompatActivity {
 
         saveData();
 
-        navigateNext();
+        String gender = preferences.getString(PreferenceKeys.GENDER);
+
+        Intent intent;
+
+        if ("Female".equalsIgnoreCase(gender)) {
+
+            intent = new Intent(
+                    WellnessSetupActivity.this,
+                    PeriodSetupActivity.class
+            );
+
+        } else {
+
+            preferences.putBoolean(
+                    PreferenceKeys.PERIOD_ENABLED,
+                    false
+            );
+
+            intent = new Intent(
+                    WellnessSetupActivity.this,
+                    AboutYouActivity.class
+            );
+        }
+
+        startActivity(intent);
+        finish();
     }
 
     private void saveData() {
 
         RadioButton selectedMood =
-                findViewById(rgMoodFrequency.getCheckedRadioButtonId());
+                findViewById(rgMoodCheck.getCheckedRadioButtonId());
 
         preferences.putString(
-                PreferenceKeys.MOOD_FREQUENCY,
+                PreferenceKeys.MOOD_CHECK,
                 selectedMood.getText().toString()
         );
 
@@ -114,42 +109,5 @@ public class WellnessSetupActivity extends AppCompatActivity {
                 PreferenceKeys.MOTIVATION_ENABLED,
                 switchMotivation.isChecked()
         );
-
-        StringBuilder goals = new StringBuilder();
-
-        if (cbConfidence.isChecked()) {
-            goals.append("Confidence,");
-        }
-
-        if (cbStress.isChecked()) {
-            goals.append("Stress,");
-        }
-
-        if (cbProductivity.isChecked()) {
-            goals.append("Productivity,");
-        }
-
-        if (cbSelfCare.isChecked()) {
-            goals.append("Self Care,");
-        }
-
-        if (cbMental.isChecked()) {
-            goals.append("Mental Health,");
-        }
-
-        preferences.putString(
-                PreferenceKeys.WELLNESS_GOALS,
-                goals.toString()
-        );
-    }
-
-    private void navigateNext() {
-
-        Intent intent = new Intent(
-                WellnessSetupActivity.this,
-                SetupCompleteActivity.class
-        );
-
-        startActivity(intent);
     }
 }

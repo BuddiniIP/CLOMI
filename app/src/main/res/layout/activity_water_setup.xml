@@ -2,9 +2,11 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    tools:context=".activities.onboarding.WaterSetupActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,18 +14,23 @@
         android:orientation="vertical"
         android:padding="24dp">
 
+        <!-- Back Button -->
+
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:background="@android:color/transparent"
+            android:contentDescription="@string/back"
             android:src="@android:drawable/ic_media_previous"
-            app:tint="@color/text_primary"/>
+            app:tint="@color/text_primary" />
+
+        <!-- Progress -->
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
@@ -31,246 +38,147 @@
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_active"/>
+                android:background="@drawable/dot_active" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_active"/>
+                android:background="@drawable/dot_active" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_inactive" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_inactive" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_inactive" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_inactive" />
 
         </LinearLayout>
+
+        <!-- Icon -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:text="💧"
-            android:textSize="64sp"/>
+            android:textSize="64sp" />
+
+        <!-- Title -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Stay Hydrated"
+            android:text="Daily Water Goal"
             android:textColor="@color/text_primary"
             android:textSize="28sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
+        <!-- Subtitle -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="Let's create your daily water goal."
+            android:text="Choose your daily water intake goal."
             android:textColor="@color/text_secondary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
+
+        <!-- Water Goal Card -->
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            app:cardCornerRadius="18dp"
-            app:cardBackgroundColor="@color/card">
+            app:cardBackgroundColor="@color/card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
 
-            <LinearLayout
+            <RadioGroup
+                android:id="@+id/rgWater"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="18dp">
+                android:padding="20dp">
 
-                <TextView
+                <RadioButton
+                    android:id="@+id/rbWater15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="How much water do you drink daily?"
-                    android:textStyle="bold"
-                    android:textSize="17sp"/>
+                    android:text="1.5 Litres" />
 
-                <RadioGroup
-                    android:id="@+id/rgWater"
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/rbWater20"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
+                    android:text="2.0 Litres" />
 
-                    <RadioButton
-                        android:id="@+id/rbWater1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0 - 2 Glasses"/>
+                <RadioButton
+                    android:id="@+id/rbWater25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.5 Litres" />
 
-                    <RadioButton
-                        android:id="@+id/rbWater2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3 - 5 Glasses"/>
+                <RadioButton
+                    android:id="@+id/rbWater30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3.0 Litres" />
 
-                    <RadioButton
-                        android:id="@+id/rbWater3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="6 - 8 Glasses"/>
-
-                    <RadioButton
-                        android:id="@+id/rbWater4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="More than 8 Glasses"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
+            </RadioGroup>
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="18dp"
-            app:cardBackgroundColor="@color/card">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="18dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Do you exercise regularly?"
-                    android:textStyle="bold"
-                    android:textSize="17sp"/>
-
-                <RadioGroup
-                    android:id="@+id/rgExercise"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
-
-                    <RadioButton
-                        android:id="@+id/rbNever"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Never"/>
-
-                    <RadioButton
-                        android:id="@+id/rbSometimes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sometimes"/>
-
-                    <RadioButton
-                        android:id="@+id/rbFrequently"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Frequently"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="18dp"
-            app:cardBackgroundColor="#E3F2FD">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="18dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🌱 Recommended Goal"
-                    android:textStyle="bold"
-                    android:textSize="17sp"/>
-
-                <TextView
-                    android:id="@+id/tvGoal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="2.2 Litres / Day"
-                    android:textColor="@color/primary"
-                    android:textSize="24sp"
-                    android:textStyle="bold"/>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:hint="Custom Water Goal (Optional)">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCustomGoal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
+        <!-- Recommendation -->
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardCornerRadius="18dp"
-            app:cardBackgroundColor="@color/primary_light">
+            app:cardBackgroundColor="@color/blue"
+            app:cardCornerRadius="16dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="18dp"
-                android:text="🌱 CLOMI Tip\n\nDrinking enough water improves your mood, concentration and overall health."
-                android:textColor="@color/text_primary"/>
+                android:text="Recommendation&#10;&#10;Most adults benefit from drinking around 2–3 litres of water each day."
+                android:textColor="@color/text_primary"
+                android:textSize="15sp" />
 
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- Continue -->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnContinue"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:text="Continue →"
+            android:layout_marginBottom="24dp"
+            android:text="Continue"
             android:textAllCaps="false"
-            android:textSize="17sp"
-            app:backgroundTint="@color/primary"
-            app:cornerRadius="18dp"/>
+            android:textSize="16sp"
+            app:backgroundTint="@color/blue"
+            app:cornerRadius="16dp" />
 
     </LinearLayout>
 

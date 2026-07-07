@@ -13,30 +13,96 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <TextView
+        <!-- Progress -->
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="🌱"
-            android:textSize="80sp"/>
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active"/>
+
+        </LinearLayout>
+
+        <!-- Icon -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="One Last Thing"
-            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:text="👤"
+            android:textSize="70sp"/>
+
+        <!-- Title -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="About You"
+            android:textColor="@color/text_primary"
             android:textSize="30sp"
-            android:textColor="@color/text_primary"/>
+            android:textStyle="bold"/>
+
+        <!-- Subtitle -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="What should CLOMI call you?"
+            android:text="Enter your name to personalize your CLOMI experience."
             android:textColor="@color/text_secondary"
             android:textSize="17sp"/>
+
+        <!-- Name -->
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -47,36 +113,35 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Information -->
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardCornerRadius="18dp"
-            app:cardBackgroundColor="#E8F5E9">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="18dp"
-                android:text="🌱 CLOMI will use your name to personalize greetings, motivation and AI suggestions."
-                android:textColor="@color/text_primary"/>
+            app:cardBackgroundColor="@color/primary_light"
+            app:cardCornerRadius="16dp">
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Button -->
+
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStartJourney"
+            android:id="@+id/btnGetStarted"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginTop="40dp"
-            android:text="Start My Journey 🚀"
+            android:layout_marginBottom="24dp"
+            android:text="Get Started"
             android:textAllCaps="false"
-            android:textSize="17sp"
+            android:textSize="16sp"
             app:backgroundTint="@color/primary"
-            app:cornerRadius="18dp"/>
+            app:cornerRadius="16dp"/>
 
     </LinearLayout>
 

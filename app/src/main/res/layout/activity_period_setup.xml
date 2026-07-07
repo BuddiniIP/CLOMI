@@ -12,20 +12,23 @@
         android:orientation="vertical"
         android:padding="24dp">
 
+        <!-- Back Button -->
+
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:background="@android:color/transparent"
+            android:contentDescription="@string/back"
             android:src="@android:drawable/ic_media_previous"
-            app:tint="@color/text_primary"/>
+            app:tint="@color/text_primary" />
 
         <!-- Progress -->
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
@@ -33,141 +36,109 @@
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_active"/>
+                android:background="@drawable/dot_active" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_active"/>
+                android:background="@drawable/dot_active" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_active"/>
+                android:background="@drawable/dot_active" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_active"/>
+                android:background="@drawable/dot_active" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_active" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_active" />
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/dot_active" />
 
         </LinearLayout>
+
+        <!-- Icon -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="🩸"
-            android:textSize="64sp"/>
+            android:text="🌸"
+            android:textSize="64sp" />
+
+        <!-- Title -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Period Tracking"
+            android:text="Period Tracker"
             android:textColor="@color/text_primary"
             android:textSize="28sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
+        <!-- Subtitle -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="This helps CLOMI provide better predictions and reminders."
+            android:text="Track your cycle to receive personalized wellness insights."
             android:textColor="@color/text_secondary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
-        <!-- Enable -->
+        <!-- Last Period Date -->
 
-        <com.google.android.material.card.MaterialCardView
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            app:cardCornerRadius="18dp"
-            app:cardBackgroundColor="@color/card">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="18dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Enable Period Tracking?"
-                    android:textStyle="bold"
-                    android:textSize="17sp"/>
-
-                <RadioGroup
-                    android:id="@+id/rgPeriod"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <RadioButton
-                        android:id="@+id/rbEnable"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Yes"/>
-
-                    <RadioButton
-                        android:id="@+id/rbSkip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Skip for now"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Last Period -->
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
             android:hint="Last Period Date">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etLastPeriod"
+                android:id="@+id/etLastPeriodDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="false"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Cycle -->
+        <!-- Cycle Length -->
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:hint="Average Cycle Length">
+            android:layout_marginTop="20dp"
+            android:hint="Average Cycle Length (Days)">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCycleLength"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:maxLength="2" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,70 +147,64 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:hint="Average Period Length">
+            android:layout_marginTop="20dp"
+            android:hint="Average Period Length (Days)">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPeriodLength"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:maxLength="2" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Symptoms -->
+        <!-- Recommendation -->
 
-        <TextView
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Track Symptoms"
-            android:textStyle="bold"
-            android:textSize="17sp"/>
+            app:cardBackgroundColor="@color/primary_light"
+            app:cardCornerRadius="16dp">
 
-        <CheckBox
-            android:id="@+id/cbCramps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cramps"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="18dp"
+                android:text="Recommendation&#10;&#10;Most menstrual cycles range between 21 and 35 days, but every person is different."
+                android:textColor="@color/text_primary"
+                android:textSize="15sp" />
 
-        <CheckBox
-            android:id="@+id/cbHeadache"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Headache"/>
-
-        <CheckBox
-            android:id="@+id/cbAcne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Acne"/>
-
-        <CheckBox
-            android:id="@+id/cbMood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mood Changes"/>
-
-        <CheckBox
-            android:id="@+id/cbFatigue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fatigue"/>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- Continue -->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnContinue"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:text="Continue →"
+            android:layout_marginBottom="24dp"
+            android:text="Continue"
             android:textAllCaps="false"
-            android:textSize="17sp"
+            android:textSize="16sp"
             app:backgroundTint="@color/primary"
-            app:cornerRadius="18dp"/>
+            app:cornerRadius="16dp" />
+
+        <TextView
+            android:id="@+id/tvSkip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Skip for Now"
+            android:textColor="@color/primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

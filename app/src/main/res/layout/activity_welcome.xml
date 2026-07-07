@@ -11,37 +11,26 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="28dp">
+        android:padding="24dp">
 
-        <!-- Logo Placeholder -->
+        <!-- Logo -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="48dp"
             android:text="🌱"
             android:textSize="80sp" />
 
-        <!-- Welcome -->
+        <!-- Title -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:text="Welcome to CLOMI"
             android:textColor="@color/text_primary"
             android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <!-- Tagline -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="Close To Me"
-            android:textColor="@color/primary"
-            android:textSize="18sp"
             android:textStyle="bold" />
 
         <!-- Description -->
@@ -49,20 +38,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
-            android:text="Your personal habit and wellness companion.\nBuild healthy habits, stay consistent,\nand grow into the best version of yourself."
+            android:text="Track your daily habits, monitor your wellness, and build a healthier routine."
             android:textColor="@color/text_secondary"
-            android:textSize="17sp" />
+            android:textSize="16sp" />
 
-        <!-- Information Card -->
+        <!-- Guest Information -->
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             app:cardBackgroundColor="@color/card"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
             <LinearLayout
@@ -74,7 +63,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="✨ Good News!"
+                    android:text="Continue as Guest"
                     android:textColor="@color/primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -82,8 +71,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="You don't need to create an account.\n\nLet's personalize CLOMI for you first. You can create a free account later to save your progress and unlock more features."
+                    android:layout_marginTop="10dp"
+                    android:text="You can use CLOMI without signing in. Create an account later to sync your progress and access AI features."
                     android:textColor="@color/text_secondary"
                     android:textSize="15sp" />
 
@@ -91,18 +80,19 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Button -->
+        <!-- Get Started Button -->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStart"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginTop="50dp"
-            android:text="Start My Journey"
+            android:layout_height="56dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="24dp"
+            android:text="Get Started"
             android:textAllCaps="false"
-            android:textSize="17sp"
+            android:textSize="16sp"
             app:backgroundTint="@color/primary"
-            app:cornerRadius="18dp" />
+            app:cornerRadius="16dp" />
 
     </LinearLayout>
 

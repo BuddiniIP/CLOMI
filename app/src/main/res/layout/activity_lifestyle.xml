@@ -23,7 +23,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/back"
             android:src="@android:drawable/ic_media_previous"
-            app:tint="@color/text_primary"/>
+            app:tint="@color/text_primary" />
 
         <!-- Progress -->
 
@@ -38,41 +38,41 @@
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_active"/>
+                android:background="@drawable/dot_active" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_inactive" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_inactive" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_inactive" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_inactive" />
 
             <View
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_inactive" />
 
         </LinearLayout>
 
-        <!-- Plant -->
+        <!-- Icon -->
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,8 +80,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:text="🌱"
-            android:textSize="60sp"
-            tools:ignore="HardcodedText" />
+            android:textSize="60sp" />
 
         <!-- Title -->
 
@@ -92,7 +91,7 @@
             android:text="@string/lifestyle_title"
             android:textColor="@color/text_primary"
             android:textSize="28sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -100,7 +99,7 @@
             android:layout_marginTop="6dp"
             android:text="@string/lifestyle_subtitle"
             android:textColor="@color/text_secondary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <!-- Gender -->
 
@@ -109,8 +108,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:text="@string/gender_label"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <RadioGroup
             android:id="@+id/rgGender"
@@ -121,19 +120,19 @@
                 android:id="@+id/rbFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/gender_female"/>
+                android:text="@string/gender_female" />
 
             <RadioButton
                 android:id="@+id/rbMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/gender_male"/>
+                android:text="@string/gender_male" />
 
             <RadioButton
                 android:id="@+id/rbPrefer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/gender_prefer"/>
+                android:text="@string/gender_prefer" />
 
         </RadioGroup>
 
@@ -144,8 +143,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/activity_label"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <RadioGroup
             android:id="@+id/rgActivity"
@@ -156,90 +155,83 @@
                 android:id="@+id/rbNotActive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/activity_not_active"/>
+                android:text="@string/activity_not_active" />
 
             <RadioButton
                 android:id="@+id/rbLight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/activity_light"/>
+                android:text="@string/activity_light" />
 
             <RadioButton
                 android:id="@+id/rbModerate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/activity_moderate"/>
+                android:text="@string/activity_moderate" />
 
             <RadioButton
                 android:id="@+id/rbVery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/activity_very"/>
+                android:text="@string/activity_very" />
 
         </RadioGroup>
 
-        <!-- Goal -->
+        <!-- Goals -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/goal_label"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:text="What would you like to focus on?"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <RadioGroup
-            android:id="@+id/rgGoal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/cbHabit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Build Better Habits" />
 
-            <RadioButton
-                android:id="@+id/rbHabit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/goal_habit"/>
+        <CheckBox
+            android:id="@+id/cbCare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Improve Self Care" />
 
-            <RadioButton
-                android:id="@+id/rbCare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/goal_care"/>
+        <CheckBox
+            android:id="@+id/cbWellness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Improve Wellness" />
 
-            <RadioButton
-                android:id="@+id/rbWellness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/goal_wellness"/>
+        <CheckBox
+            android:id="@+id/cbProductivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Increase Productivity" />
 
-            <RadioButton
-                android:id="@+id/rbProductivity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/goal_productivity"/>
+        <CheckBox
+            android:id="@+id/cbStress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reduce Stress" />
 
-            <RadioButton
-                android:id="@+id/rbStress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/goal_stress"/>
-
-        </RadioGroup>
-
-        <!-- Tip -->
+        <!-- Recommendation -->
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="28dp"
             app:cardBackgroundColor="@color/primary_light"
-            app:cardCornerRadius="18dp">
+            app:cardCornerRadius="16dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="18dp"
-                android:text="@string/lifestyle_tip"
-                android:textColor="@color/text_primary"/>
+                android:text="Select one or more focus areas. CLOMI will personalize your experience based on your choices."
+                android:textColor="@color/text_primary" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -248,14 +240,14 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnContinue"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="24dp"
             android:text="@string/continue_btn"
             android:textAllCaps="false"
-            android:textSize="17sp"
+            android:textSize="16sp"
             app:backgroundTint="@color/primary"
-            app:cornerRadius="18dp"/>
+            app:cornerRadius="16dp" />
 
     </LinearLayout>
 

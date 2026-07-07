@@ -2,11 +2,9 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".activities.onboarding.WellnessSetupActivity">
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +17,6 @@
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:background="@android:color/transparent"
-            android:contentDescription="@string/back"
             android:src="@android:drawable/ic_media_previous"
             app:tint="@color/text_primary"/>
 
@@ -28,7 +25,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
@@ -73,140 +70,130 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:text="😊"
-            android:textSize="64sp"
-            tools:ignore="HardcodedText" />
+            android:textSize="64sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/wellness_title"
-            android:textStyle="bold"
+            android:text="Wellness Check"
+            android:textColor="@color/text_primary"
             android:textSize="28sp"
-            android:textColor="@color/text_primary"/>
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="@string/wellness_subtitle"
+            android:text="Take a moment to care for your mental wellbeing."
             android:textColor="@color/text_secondary"
             android:textSize="16sp"/>
 
-        <!-- Mood Check -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/mood_freq_label"
-            android:textStyle="bold"
-            android:textSize="17sp"/>
-
-        <RadioGroup
-            android:id="@+id/rgMoodFrequency"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/card">
 
-            <RadioButton
-                android:id="@+id/rbDaily"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/mood_daily"/>
+                android:orientation="vertical"
+                android:padding="18dp">
 
-            <RadioButton
-                android:id="@+id/rbWeekly"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mood_weekly"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Would you like a daily mood check?"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
 
-            <RadioButton
-                android:id="@+id/rbNeeded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mood_needed"/>
+                <RadioGroup
+                    android:id="@+id/rgMoodCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
 
-        </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rbMoodYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"/>
 
-        <!-- Motivation -->
+                    <RadioButton
+                        android:id="@+id/rbMoodNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No"/>
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchMotivation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:text="@string/motivation_switch"/>
+                </RadioGroup>
 
-        <!-- Improve -->
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:text="@string/improve_label"
-            android:textStyle="bold"
-            android:textSize="17sp"/>
-
-        <CheckBox
-            android:id="@+id/cbConfidence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/improve_confidence"/>
-
-        <CheckBox
-            android:id="@+id/cbStress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/improve_stress"/>
-
-        <CheckBox
-            android:id="@+id/cbProductivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/improve_productivity"/>
-
-        <CheckBox
-            android:id="@+id/cbSelfCare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/improve_self_care"/>
-
-        <CheckBox
-            android:id="@+id/cbMental"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/improve_mental"/>
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardCornerRadius="18dp"
-            app:cardBackgroundColor="#FFF8E1">
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/card">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Enable Daily Motivation"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchMotivation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/primary_light">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="18dp"
-                android:text="@string/wellness_tip"
+                android:text="Recommendation&#10;&#10;Checking your mood every day helps you understand your emotional wellbeing over time."
                 android:textColor="@color/text_primary"/>
 
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnFinish"
+            android:id="@+id/btnContinue"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:text="@string/finish_setup"
+            android:layout_marginBottom="24dp"
+            android:text="Continue"
             android:textAllCaps="false"
-            android:textSize="17sp"
+            android:textSize="16sp"
             app:backgroundTint="@color/primary"
-            app:cornerRadius="18dp"/>
+            app:cornerRadius="16dp"/>
 
     </LinearLayout>
 

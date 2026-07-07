@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.clomi.R;
 import com.example.clomi.preferences.ClomiPreferenceManager;
@@ -19,9 +20,8 @@ public class SkincareSetupActivity extends AppCompatActivity {
     private ImageButton btnBack;
     private MaterialButton btnContinue;
 
-    private RadioGroup rgRoutine;
     private RadioGroup rgSkinType;
-    private RadioGroup rgReminder;
+    private SwitchCompat switchReminder;
 
     private ClomiPreferenceManager preferences;
 
@@ -41,9 +41,8 @@ public class SkincareSetupActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         btnContinue = findViewById(R.id.btnContinue);
 
-        rgRoutine = findViewById(R.id.rgRoutine);
         rgSkinType = findViewById(R.id.rgSkinType);
-        rgReminder = findViewById(R.id.rgReminder);
+        switchReminder = findViewById(R.id.switchReminder);
     }
 
     private void setupListeners() {
@@ -55,16 +54,6 @@ public class SkincareSetupActivity extends AppCompatActivity {
 
     private void validateAndContinue() {
 
-        if (rgRoutine.getCheckedRadioButtonId() == -1) {
-
-            Toast.makeText(
-                    this,
-                    "Please choose a skincare routine option.",
-                    Toast.LENGTH_SHORT
-            ).show();
-            return;
-        }
-
         if (rgSkinType.getCheckedRadioButtonId() == -1) {
 
             Toast.makeText(
@@ -72,58 +61,31 @@ public class SkincareSetupActivity extends AppCompatActivity {
                     "Please select your skin type.",
                     Toast.LENGTH_SHORT
             ).show();
-            return;
-        }
 
-        if (rgReminder.getCheckedRadioButtonId() == -1) {
-
-            Toast.makeText(
-                    this,
-                    "Please choose a reminder preference.",
-                    Toast.LENGTH_SHORT
-            ).show();
             return;
         }
 
         saveData();
 
-        navigateNext();
+        startActivity(new Intent(
+                SkincareSetupActivity.this,
+                WellnessSetupActivity.class
+        ));
     }
 
     private void saveData() {
 
-        RadioButton selectedRoutine =
-                findViewById(rgRoutine.getCheckedRadioButtonId());
-
         RadioButton selectedSkinType =
                 findViewById(rgSkinType.getCheckedRadioButtonId());
-
-        RadioButton selectedReminder =
-                findViewById(rgReminder.getCheckedRadioButtonId());
-
-        preferences.putString(
-                PreferenceKeys.SKINCARE_ROUTINE,
-                selectedRoutine.getText().toString()
-        );
 
         preferences.putString(
                 PreferenceKeys.SKIN_TYPE,
                 selectedSkinType.getText().toString()
         );
 
-        preferences.putString(
+        preferences.putBoolean(
                 PreferenceKeys.SKINCARE_REMINDER,
-                selectedReminder.getText().toString()
+                switchReminder.isChecked()
         );
-    }
-
-    private void navigateNext() {
-
-        Intent intent = new Intent(
-                SkincareSetupActivity.this,
-                WellnessSetupActivity.class
-        );
-
-        startActivity(intent);
     }
 }

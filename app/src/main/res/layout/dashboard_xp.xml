@@ -1,57 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="18dp"
-    android:orientation="vertical">
+    android:layout_marginBottom="20dp"
+    android:orientation="horizontal">
+
+    <!-- XP Card -->
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginEnd="8dp"
         app:cardBackgroundColor="@color/card"
         app:cardCornerRadius="20dp"
-        app:cardElevation="3dp">
+        app:cardElevation="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:gravity="center"
+            android:orientation="vertical"
             android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="⭐"
-                android:textSize="38sp" />
+                android:textSize="32sp"/>
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:orientation="vertical">
+                android:layout_marginTop="8dp"
+                android:text="XP"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Experience Points"
-                    android:textColor="@color/text_primary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvXP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="0 XP"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
 
-                <TextView
-                    android:id="@+id/tvXP"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="120 XP"
-                    android:textColor="@color/primary"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
+        </LinearLayout>
 
-            </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Streak Card -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        app:cardBackgroundColor="@color/card"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔥"
+                android:textSize="32sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Streak"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tvStreak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="0 Days"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 

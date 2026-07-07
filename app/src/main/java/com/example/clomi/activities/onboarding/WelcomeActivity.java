@@ -17,17 +17,21 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        initializeViews();
+        setupListeners();
+    }
+
+    private void initializeViews() {
         btnStart = findViewById(R.id.btnStart);
+    }
 
+    private void setupListeners() {
         btnStart.setOnClickListener(v -> {
-
             Intent intent = new Intent(
                     WelcomeActivity.this,
                     LifestyleActivity.class
             );
-
             startActivity(intent);
         });
-
     }
 }

@@ -38,7 +38,6 @@ public class SplashActivity extends AppCompatActivity {
         TextView logo = findViewById(R.id.tvLogo);
         TextView appName = findViewById(R.id.tvAppName);
         TextView tagline = findViewById(R.id.tvTagline);
-        TextView description = findViewById(R.id.tvDescription);
         TextView loading = findViewById(R.id.tvLoading);
 
         AlphaAnimation fade = new AlphaAnimation(0f, 1f);
@@ -48,7 +47,6 @@ public class SplashActivity extends AppCompatActivity {
         logo.startAnimation(fade);
         appName.startAnimation(fade);
         tagline.startAnimation(fade);
-        description.startAnimation(fade);
         loading.startAnimation(fade);
     }
 

@@ -2,7 +2,6 @@ package com.example.clomi.activities.onboarding;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class AboutYouActivity extends AppCompatActivity {
 
     private TextInputEditText etName;
-    private MaterialButton btnStartJourney;
+    private MaterialButton btnGetStarted;
 
     private ClomiPreferenceManager preferences;
 
@@ -34,17 +33,17 @@ public class AboutYouActivity extends AppCompatActivity {
     private void initializeViews() {
 
         etName = findViewById(R.id.etName);
-        btnStartJourney = findViewById(R.id.btnStartJourney);
+        btnGetStarted = findViewById(R.id.btnGetStarted);
 
     }
 
     private void setupListeners() {
 
-        btnStartJourney.setOnClickListener(v -> saveProfile());
+        btnGetStarted.setOnClickListener(v -> saveUser());
 
     }
 
-    private void saveProfile() {
+    private void saveUser() {
 
         String name = etName.getText().toString().trim();
 
@@ -65,26 +64,12 @@ public class AboutYouActivity extends AppCompatActivity {
                 true
         );
 
-        Toast.makeText(
-                this,
-                "Welcome to CLOMI, " + name + " 🌱",
-                Toast.LENGTH_SHORT
-        ).show();
-
-        navigateNext();
-
-    }
-
-    private void navigateNext() {
-
-        Intent intent = new Intent(
+        startActivity(new Intent(
                 AboutYouActivity.this,
                 DashboardActivity.class
-        );
+        ));
 
-        startActivity(intent);
-
-        finishAffinity();
-
+        finish();
     }
+
 }

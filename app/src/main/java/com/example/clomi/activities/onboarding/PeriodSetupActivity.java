@@ -4,9 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,19 +15,14 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
-import java.util.Locale;
 
 public class PeriodSetupActivity extends AppCompatActivity {
 
     private ImageButton btnBack;
     private MaterialButton btnContinue;
+    private TextView tvSkip;
 
-    private RadioGroup rgPeriod;
-
-    private RadioButton rbEnable;
-    private RadioButton rbSkip;
-
-    private TextInputEditText etLastPeriod;
+    private TextInputEditText etLastPeriodDate;
     private TextInputEditText etCycleLength;
     private TextInputEditText etPeriodLength;
 
@@ -50,13 +43,9 @@ public class PeriodSetupActivity extends AppCompatActivity {
 
         btnBack = findViewById(R.id.btnBack);
         btnContinue = findViewById(R.id.btnContinue);
+        tvSkip = findViewById(R.id.tvSkip);
 
-        rgPeriod = findViewById(R.id.rgPeriod);
-
-        rbEnable = findViewById(R.id.rbEnable);
-        rbSkip = findViewById(R.id.rbSkip);
-
-        etLastPeriod = findViewById(R.id.etLastPeriod);
+        etLastPeriodDate = findViewById(R.id.etLastPeriodDate);
         etCycleLength = findViewById(R.id.etCycleLength);
         etPeriodLength = findViewById(R.id.etPeriodLength);
     }
@@ -65,28 +54,42 @@ public class PeriodSetupActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
-        etLastPeriod.setOnClickListener(v -> showDatePicker());
+        etLastPeriodDate.setOnClickListener(v -> showDatePicker());
 
-        btnContinue.setOnClickListener(v -> validateAndContinue());
+        btnContinue.setOnClickListener(v -> savePeriodData());
+
+        tvSkip.setOnClickListener(v -> {
+
+            preferences.putBoolean(
+                    PreferenceKeys.PERIOD_ENABLED,
+                    false
+            );
+
+            startActivity(new Intent(
+                    PeriodSetupActivity.this,
+                    AboutYouActivity.class
+            ));
+
+            finish();
+        });
     }
 
     private void showDatePicker() {
 
         Calendar calendar = Calendar.getInstance();
 
-        DatePickerDialog dialog = new DatePickerDialog(
+        DatePickerDialog picker = new DatePickerDialog(
                 this,
-                (view, year, month, dayOfMonth) -> {
+                (view, year, month, day) -> {
 
                     String date = String.format(
-                            Locale.getDefault(),
                             "%02d/%02d/%04d",
-                            dayOfMonth,
+                            day,
                             month + 1,
                             year
                     );
 
-                    etLastPeriod.setText(date);
+                    etLastPeriodDate.setText(date);
 
                 },
                 calendar.get(Calendar.YEAR),
@@ -94,78 +97,68 @@ public class PeriodSetupActivity extends AppCompatActivity {
                 calendar.get(Calendar.DAY_OF_MONTH)
         );
 
-        dialog.show();
+        picker.show();
     }
 
-    private void validateAndContinue() {
+    private void savePeriodData() {
 
-        if (rgPeriod.getCheckedRadioButtonId() == -1) {
+        String lastDate = etLastPeriodDate.getText().toString().trim();
+        String cycle = etCycleLength.getText().toString().trim();
+        String period = etPeriodLength.getText().toString().trim();
 
-            Toast.makeText(
-                    this,
-                    "Please choose an option.",
-                    Toast.LENGTH_SHORT
-            ).show();
-
+        if (lastDate.isEmpty()) {
+            etLastPeriodDate.setError("Select last period date");
             return;
         }
 
-        if (rbEnable.isChecked()) {
-
-            if (etLastPeriod.getText().toString().trim().isEmpty()) {
-                etLastPeriod.setError("Select last period date");
-                return;
-            }
-
-            if (etCycleLength.getText().toString().trim().isEmpty()) {
-                etCycleLength.setError("Enter cycle length");
-                return;
-            }
-
-            if (etPeriodLength.getText().toString().trim().isEmpty()) {
-                etPeriodLength.setError("Enter period length");
-                return;
-            }
+        if (cycle.isEmpty()) {
+            etCycleLength.setError("Enter cycle length");
+            return;
         }
 
-        saveData();
+        if (period.isEmpty()) {
+            etPeriodLength.setError("Enter period length");
+            return;
+        }
 
-        navigateNext();
-    }
+        int cycleLength = Integer.parseInt(cycle);
+        int periodLength = Integer.parseInt(period);
 
-    private void saveData() {
+        if (cycleLength < 15 || cycleLength > 60) {
+            etCycleLength.setError("Enter 15 - 60 days");
+            return;
+        }
+
+        if (periodLength < 2 || periodLength > 15) {
+            etPeriodLength.setError("Enter 2 - 15 days");
+            return;
+        }
 
         preferences.putBoolean(
                 PreferenceKeys.PERIOD_ENABLED,
-                rbEnable.isChecked()
+                true
         );
 
-        if (rbEnable.isChecked()) {
+        preferences.putString(
+                PreferenceKeys.LAST_PERIOD_DATE,
+                lastDate
+        );
 
-            preferences.putString(
-                    PreferenceKeys.LAST_PERIOD_DATE,
-                    etLastPeriod.getText().toString().trim()
-            );
+        preferences.putString(
+                PreferenceKeys.CYCLE_LENGTH,
+                cycle
+        );
 
-            preferences.putString(
-                    PreferenceKeys.CYCLE_LENGTH,
-                    etCycleLength.getText().toString().trim()
-            );
+        preferences.putString(
+                PreferenceKeys.PERIOD_LENGTH,
+                period
+        );
 
-            preferences.putString(
-                    PreferenceKeys.PERIOD_LENGTH,
-                    etPeriodLength.getText().toString().trim()
-            );
-        }
-    }
-
-    private void navigateNext() {
-
-        Intent intent = new Intent(
+        startActivity(new Intent(
                 PeriodSetupActivity.this,
-                SkincareSetupActivity.class
-        );
+                AboutYouActivity.class
+        ));
 
-        startActivity(intent);
+        finish();
     }
 }

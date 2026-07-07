@@ -1,16 +1,23 @@
 package com.example.clomi.activities.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.clomi.R;
+import com.example.clomi.activities.habits.HabitsActivity;
+import com.example.clomi.activities.profile.ProfileActivity;
+import com.example.clomi.activities.reports.ProgressActivity;
 import com.example.clomi.preferences.ClomiPreferenceManager;
 import com.example.clomi.preferences.PreferenceKeys;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
-
+import android.view.View;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.button.MaterialButton;
 import java.util.Calendar;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -19,13 +26,19 @@ public class DashboardActivity extends AppCompatActivity {
     private TextView tvUserName;
     private TextView tvQuote;
     private TextView tvProgressPercent;
-
-    private TextView tvWaterProgress;
-    private TextView tvSleepProgress;
+    private TextView tvProgressMessage;
     private TextView tvXP;
-    private TextView tvPlantStatus;
-    private TextView tvMission;
-
+    private TextView tvStreak;
+    private RecyclerView rvCustomHabits;
+    private MaterialCardView cardWellness;
+    private TextView tvLastPeriod;
+    private TextView tvCycleLength;
+    private MaterialButton btnOpenPeriodTracker;
+    private MaterialButton btnUnlockAI;
+    private TextView tvReminderWater;
+    private TextView tvReminderSleep;
+    private TextView tvReminderSkin;
+    private TextView tvReminderMood;
     private LinearProgressIndicator progressToday;
 
     private BottomNavigationView bottomNavigation;
@@ -42,6 +55,8 @@ public class DashboardActivity extends AppCompatActivity {
         initializeViews();
         loadDashboard();
         setupBottomNavigation();
+        btnUnlockAI.setOnClickListener(v -> {
+        });
     }
 
     private void initializeViews() {
@@ -49,22 +64,25 @@ public class DashboardActivity extends AppCompatActivity {
         tvGreeting = findViewById(R.id.tvGreeting);
         tvUserName = findViewById(R.id.tvUserName);
         tvQuote = findViewById(R.id.tvQuote);
+        tvProgressMessage = findViewById(R.id.tvProgressMessage);
+        tvStreak = findViewById(R.id.tvStreak);
+        rvCustomHabits = findViewById(R.id.rvCustomHabits);
+        cardWellness = findViewById(R.id.cardWellness);
+        btnUnlockAI = findViewById(R.id.btnUnlockAI);
+        tvLastPeriod = findViewById(R.id.tvLastPeriod);
+        tvCycleLength = findViewById(R.id.tvCycleLength);
+        tvReminderWater = findViewById(R.id.tvReminderWater);
+        tvReminderSleep = findViewById(R.id.tvReminderSleep);
+        tvReminderSkin = findViewById(R.id.tvReminderSkin);
+        tvReminderMood = findViewById(R.id.tvReminderMood);
+        btnOpenPeriodTracker = findViewById(R.id.btnOpenPeriodTracker);
 
         tvProgressPercent = findViewById(R.id.tvProgressPercent);
-
         progressToday = findViewById(R.id.progressToday);
-
-        tvWaterProgress = findViewById(R.id.tvWaterProgress);
-        tvSleepProgress = findViewById(R.id.tvSleepProgress);
 
         tvXP = findViewById(R.id.tvXP);
 
-        tvPlantStatus = findViewById(R.id.tvPlantStatus);
-
-        tvMission = findViewById(R.id.tvMission);
-
         bottomNavigation = findViewById(R.id.bottomNavigation);
-
     }
 
     private void loadDashboard() {
@@ -74,7 +92,33 @@ public class DashboardActivity extends AppCompatActivity {
                 "User"
         );
 
-        tvUserName.setText(name + " 🌸");
+        boolean enabled = preferences.getBoolean(
+                PreferenceKeys.PERIOD_ENABLED
+        );
+
+        if (enabled) {
+
+            cardWellness.setVisibility(View.VISIBLE);
+
+            tvLastPeriod.setText(
+                    preferences.getString(
+                            PreferenceKeys.LAST_PERIOD_DATE
+                    )
+            );
+
+            tvCycleLength.setText(
+                    preferences.getString(
+                            PreferenceKeys.CYCLE_LENGTH
+                    ) + " Days"
+            );
+
+        } else {
+
+            cardWellness.setVisibility(View.GONE);
+
+        }
+
+        tvUserName.setText(name);
 
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 
@@ -92,33 +136,52 @@ public class DashboardActivity extends AppCompatActivity {
 
         }
 
-        tvQuote.setText("Small habits create big changes.");
+        tvQuote.setText("Let's complete your habits today 🌸");
 
         int progress = 0;
 
         progressToday.setProgress(progress);
-
         tvProgressPercent.setText(progress + "%");
 
-        String waterGoal = preferences.getString(
-                PreferenceKeys.WATER_GOAL,
-                "2.5 L"
+        if (progress == 0) {
+
+            tvProgressMessage.setText(
+                    "Complete today's habits to earn XP."
+            );
+
+        } else if (progress < 50) {
+
+            tvProgressMessage.setText(
+                    "You're off to a good start!"
+            );
+
+        } else if (progress < 100) {
+
+            tvProgressMessage.setText(
+                    "Keep going, you're doing great!"
+            );
+
+        } else {
+
+            tvProgressMessage.setText(
+                    "Amazing! All habits completed today 🎉"
+            );
+
+        }
+
+        int xp = preferences.getInt(
+                PreferenceKeys.XP,
+                0
         );
 
-        tvWaterProgress.setText(waterGoal);
-
-        String sleepGoal = preferences.getString(
-                PreferenceKeys.SLEEP_HOURS,
-                "8 Hours"
+        int streak = preferences.getInt(
+                PreferenceKeys.STREAK,
+                0
         );
 
-        tvSleepProgress.setText(sleepGoal);
+        tvXP.setText(xp + " XP");
 
-        tvXP.setText("0 XP");
-
-        tvPlantStatus.setText("Healthy 🌱");
-
-        tvMission.setText("Complete today's habits.");
+        tvStreak.setText(streak + " Days");
     }
 
     private void setupBottomNavigation() {
@@ -135,34 +198,30 @@ public class DashboardActivity extends AppCompatActivity {
 
             } else if (id == R.id.navigation_habits) {
 
-                // TODO: Open HabitsActivity
-
-                return true;
-
-            } else if (id == R.id.navigation_plant) {
-
-                // TODO: Open PlantActivity
-
+                startActivity(new Intent(this, HabitsActivity.class));
+                finish();
                 return true;
 
             } else if (id == R.id.navigation_reports) {
 
-                // TODO: Open ProgressActivity
-
+                startActivity(new Intent(this, ProgressActivity.class));
+                finish();
                 return true;
 
             } else if (id == R.id.navigation_profile) {
 
-                // TODO: Open ProfileActivity
-
+                startActivity(new Intent(this, ProfileActivity.class));
+                finish();
                 return true;
-
             }
 
             return false;
-
         });
-
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadDashboard();
+    }
 }

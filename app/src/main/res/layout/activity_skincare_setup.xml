@@ -2,9 +2,11 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    tools:context=".activities.onboarding.SkincareSetupActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,20 +14,23 @@
         android:orientation="vertical"
         android:padding="24dp">
 
+        <!-- Back -->
+
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:background="@android:color/transparent"
+            android:contentDescription="@string/back"
             android:src="@android:drawable/ic_media_previous"
-            app:tint="@color/text_primary"/>
+            app:tint="@color/text_primary" />
 
         <!-- Progress -->
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
@@ -57,7 +62,7 @@
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_margin="4dp"
-                android:background="@drawable/dot_active"/>
+                android:background="@drawable/dot_inactive"/>
 
             <View
                 android:layout_width="12dp"
@@ -67,201 +72,153 @@
 
         </LinearLayout>
 
+        <!-- Icon -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="🌿"
+            android:text="🧴"
             android:textSize="64sp"/>
+
+        <!-- Title -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Healthy Skin Journey"
+            android:text="Skincare Routine"
             android:textColor="@color/text_primary"
             android:textSize="28sp"
             android:textStyle="bold"/>
+
+        <!-- Subtitle -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="Let's personalize your skincare routine."
+            android:text="Choose your skin type."
             android:textColor="@color/text_secondary"
             android:textSize="16sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Do you currently have a skincare routine?"
-            android:textStyle="bold"
-            android:textSize="17sp"/>
+        <!-- Skin Type -->
 
-        <RadioGroup
-            android:id="@+id/rgRoutine"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/rbYes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"/>
-
-            <RadioButton
-                android:id="@+id/rbNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"/>
-
-            <RadioButton
-                android:id="@+id/rbHelp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Help me create one"/>
-
-        </RadioGroup>
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:text="Skin Type"
-            android:textStyle="bold"
-            android:textSize="17sp"/>
+            android:layout_marginTop="28dp"
+            app:cardBackgroundColor="@color/card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
 
-        <RadioGroup
-            android:id="@+id/rgSkinType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/rbOily"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/rgSkinType"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Oily"/>
+                android:padding="20dp">
 
-            <RadioButton
-                android:id="@+id/rbDry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dry"/>
+                <RadioButton
+                    android:id="@+id/rbNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Normal"/>
 
-            <RadioButton
-                android:id="@+id/rbCombination"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Combination"/>
+                <RadioButton
+                    android:id="@+id/rbDry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dry"/>
 
-            <RadioButton
-                android:id="@+id/rbSensitive"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sensitive"/>
+                <RadioButton
+                    android:id="@+id/rbOily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Oily"/>
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/rbCombination"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Combination"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:text="Routine Steps"
-            android:textStyle="bold"
-            android:textSize="17sp"/>
+                <RadioButton
+                    android:id="@+id/rbSensitive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sensitive"/>
 
-        <CheckBox
-            android:id="@+id/cbCleanser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cleanser"/>
+            </RadioGroup>
 
-        <CheckBox
-            android:id="@+id/cbToner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Toner"/>
+        </com.google.android.material.card.MaterialCardView>
 
-        <CheckBox
-            android:id="@+id/cbSerum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Serum"/>
-
-        <CheckBox
-            android:id="@+id/cbMoisturizer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Moisturizer"/>
-
-        <CheckBox
-            android:id="@+id/cbSunscreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sunscreen"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:text="Reminder"
-            android:textStyle="bold"
-            android:textSize="17sp"/>
-
-        <RadioGroup
-            android:id="@+id/rgReminder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/rbMorning"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Morning"/>
-
-            <RadioButton
-                android:id="@+id/rbEvening"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Evening"/>
-
-            <RadioButton
-                android:id="@+id/rbBoth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Morning &amp; Evening"/>
-
-        </RadioGroup>
+        <!-- Reminder -->
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardCornerRadius="18dp"
-            app:cardBackgroundColor="#E8F5E9">
+            app:cardBackgroundColor="@color/card"
+            app:cardCornerRadius="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Enable Daily Skincare Reminder"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchReminder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Recommendation -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardBackgroundColor="@color/primary_light"
+            app:cardCornerRadius="16dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="18dp"
-                android:text="🌱 CLOMI Tip&#10;&#10;Healthy skin comes from consistency, not expensive products."
-                android:textColor="@color/text_primary"/>
+                android:text="Recommendation&#10;&#10;A simple daily skincare routine helps keep your skin healthy and consistent."
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"/>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- Continue -->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnContinue"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:text="Continue →"
+            android:layout_marginBottom="24dp"
+            android:text="Continue"
             android:textAllCaps="false"
-            android:textSize="17sp"
+            android:textSize="16sp"
             app:backgroundTint="@color/primary"
-            app:cornerRadius="18dp"/>
+            app:cornerRadius="16dp"/>
 
     </LinearLayout>
 

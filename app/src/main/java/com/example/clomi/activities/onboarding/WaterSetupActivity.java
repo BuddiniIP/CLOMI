@@ -13,7 +13,6 @@ import com.example.clomi.R;
 import com.example.clomi.preferences.ClomiPreferenceManager;
 import com.example.clomi.preferences.PreferenceKeys;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 
 public class WaterSetupActivity extends AppCompatActivity {
 
@@ -21,9 +20,6 @@ public class WaterSetupActivity extends AppCompatActivity {
     private MaterialButton btnContinue;
 
     private RadioGroup rgWater;
-    private RadioGroup rgExercise;
-
-    private TextInputEditText etCustomGoal;
 
     private ClomiPreferenceManager preferences;
 
@@ -35,10 +31,7 @@ public class WaterSetupActivity extends AppCompatActivity {
         preferences = new ClomiPreferenceManager(this);
 
         initializeViews();
-
-        btnBack.setOnClickListener(v -> finish());
-
-        btnContinue.setOnClickListener(v -> validateAndContinue());
+        setupListeners();
     }
 
     private void initializeViews() {
@@ -47,78 +40,41 @@ public class WaterSetupActivity extends AppCompatActivity {
         btnContinue = findViewById(R.id.btnContinue);
 
         rgWater = findViewById(R.id.rgWater);
-        rgExercise = findViewById(R.id.rgExercise);
+    }
 
-        etCustomGoal = findViewById(R.id.etCustomGoal);
+    private void setupListeners() {
+
+        btnBack.setOnClickListener(v -> finish());
+
+        btnContinue.setOnClickListener(v -> validateAndContinue());
+
     }
 
     private void validateAndContinue() {
 
         if (rgWater.getCheckedRadioButtonId() == -1) {
 
-            Toast.makeText(this,
-                    "Please select your daily water intake.",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    "Please select your daily water goal.",
+                    Toast.LENGTH_SHORT
+            ).show();
+
             return;
         }
 
-        if (rgExercise.getCheckedRadioButtonId() == -1) {
-
-            Toast.makeText(this,
-                    "Please select your exercise frequency.",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String waterGoal;
-
-        if (!etCustomGoal.getText().toString().trim().isEmpty()) {
-
-            try {
-
-                double custom =
-                        Double.parseDouble(
-                                etCustomGoal.getText().toString().trim());
-
-                if (custom <= 0) {
-                    etCustomGoal.setError("Enter a valid value");
-                    return;
-                }
-
-                waterGoal = custom + " L";
-
-            } catch (Exception e) {
-
-                etCustomGoal.setError("Invalid value");
-                return;
-            }
-
-        } else {
-
-            RadioButton selectedWater =
-                    findViewById(rgWater.getCheckedRadioButtonId());
-
-            waterGoal = selectedWater.getText().toString();
-        }
-
-        RadioButton selectedExercise =
-                findViewById(rgExercise.getCheckedRadioButtonId());
+        RadioButton selectedWater =
+                findViewById(rgWater.getCheckedRadioButtonId());
 
         preferences.putString(
                 PreferenceKeys.WATER_GOAL,
-                waterGoal
+                selectedWater.getText().toString()
         );
 
-        preferences.putString(
-                PreferenceKeys.EXERCISE_LEVEL,
-                selectedExercise.getText().toString()
-        );
-
-        Intent intent = new Intent(
+        startActivity(new Intent(
                 WaterSetupActivity.this,
                 SleepSetupActivity.class
-        );
-
-        startActivity(intent);
+        ));
     }
+
 }

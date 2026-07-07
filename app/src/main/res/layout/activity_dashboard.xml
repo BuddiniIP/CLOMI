@@ -23,13 +23,17 @@
 
             <include layout="@layout/dashboard_progress"/>
 
-            <include layout="@layout/dashboard_goal_cards"/>
-
             <include layout="@layout/dashboard_xp"/>
 
-            <include layout="@layout/dashboard_plant"/>
+            <include layout="@layout/dashboard_today_habits"/>
 
-            <include layout="@layout/dashboard_mission"/>
+            <include layout="@layout/dashboard_custom_habits"/>
+
+            <include layout="@layout/dashboard_wellness"/>
+
+            <include layout="@layout/dashboard_ai"/>
+
+            <include layout="@layout/dashboard_reminders"/>
 
         </LinearLayout>
 

@@ -2,6 +2,7 @@ package com.example.clomi.activities.onboarding;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,7 +22,12 @@ public class LifestyleActivity extends AppCompatActivity {
 
     private RadioGroup rgGender;
     private RadioGroup rgActivity;
-    private RadioGroup rgGoal;
+
+    private CheckBox cbHabit;
+    private CheckBox cbCare;
+    private CheckBox cbWellness;
+    private CheckBox cbProductivity;
+    private CheckBox cbStress;
 
     private ClomiPreferenceManager preferences;
 
@@ -33,10 +39,7 @@ public class LifestyleActivity extends AppCompatActivity {
         preferences = new ClomiPreferenceManager(this);
 
         initializeViews();
-
-        btnBack.setOnClickListener(v -> finish());
-
-        btnContinue.setOnClickListener(v -> validateInputs());
+        setupListeners();
     }
 
     private void initializeViews() {
@@ -46,7 +49,19 @@ public class LifestyleActivity extends AppCompatActivity {
 
         rgGender = findViewById(R.id.rgGender);
         rgActivity = findViewById(R.id.rgActivity);
-        rgGoal = findViewById(R.id.rgGoal);
+
+        cbHabit = findViewById(R.id.cbHabit);
+        cbCare = findViewById(R.id.cbCare);
+        cbWellness = findViewById(R.id.cbWellness);
+        cbProductivity = findViewById(R.id.cbProductivity);
+        cbStress = findViewById(R.id.cbStress);
+    }
+
+    private void setupListeners() {
+
+        btnBack.setOnClickListener(v -> finish());
+
+        btnContinue.setOnClickListener(v -> validateInputs());
     }
 
     private void validateInputs() {
@@ -61,43 +76,70 @@ public class LifestyleActivity extends AppCompatActivity {
             return;
         }
 
-        if (rgGoal.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "Please select your main goal.", Toast.LENGTH_SHORT).show();
+        if (!isAnyGoalSelected()) {
+            Toast.makeText(this, "Please select at least one focus area.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // ---------- Save Gender ----------
+        saveSelections();
 
-        RadioButton selectedGender = findViewById(rgGender.getCheckedRadioButtonId());
+        startActivity(new Intent(
+                LifestyleActivity.this,
+                WaterSetupActivity.class
+        ));
+    }
+
+    private boolean isAnyGoalSelected() {
+
+        return cbHabit.isChecked()
+                || cbCare.isChecked()
+                || cbWellness.isChecked()
+                || cbProductivity.isChecked()
+                || cbStress.isChecked();
+    }
+
+    private void saveSelections() {
+
+        RadioButton selectedGender =
+                findViewById(rgGender.getCheckedRadioButtonId());
+
+        RadioButton selectedActivity =
+                findViewById(rgActivity.getCheckedRadioButtonId());
 
         preferences.putString(
                 PreferenceKeys.GENDER,
                 selectedGender.getText().toString()
         );
 
-        // ---------- Save Activity Level ----------
-
-        RadioButton selectedActivity = findViewById(rgActivity.getCheckedRadioButtonId());
-
         preferences.putString(
                 PreferenceKeys.ACTIVITY_LEVEL,
                 selectedActivity.getText().toString()
         );
 
-        // ---------- Save Goal ----------
+        StringBuilder goals = new StringBuilder();
 
-        RadioButton selectedGoal = findViewById(rgGoal.getCheckedRadioButtonId());
+        if (cbHabit.isChecked())
+            goals.append("Build Better Habits,");
+
+        if (cbCare.isChecked())
+            goals.append("Improve Self Care,");
+
+        if (cbWellness.isChecked())
+            goals.append("Improve Wellness,");
+
+        if (cbProductivity.isChecked())
+            goals.append("Increase Productivity,");
+
+        if (cbStress.isChecked())
+            goals.append("Reduce Stress,");
+
+        if (goals.length() > 0) {
+            goals.deleteCharAt(goals.length() - 1);
+        }
 
         preferences.putString(
-                PreferenceKeys.MAIN_GOAL,
-                selectedGoal.getText().toString()
+                PreferenceKeys.MAIN_GOALS,
+                goals.toString()
         );
-
-        Intent intent = new Intent(
-                LifestyleActivity.this,
-                WaterSetupActivity.class
-        );
-
-        startActivity(intent);
     }
 }

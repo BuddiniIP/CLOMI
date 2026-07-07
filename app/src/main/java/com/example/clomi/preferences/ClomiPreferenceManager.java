@@ -37,9 +37,9 @@ public class ClomiPreferenceManager {
         return preferences.getInt(key, 0);
     }
 
-    // ===========================
-    // Boolean
-    // ===========================
+    public int getInt(String key, int defaultValue) {
+        return preferences.getInt(key, defaultValue);
+    }
 
     public void putBoolean(String key, boolean value) {
         editor.putBoolean(key, value);
@@ -50,6 +50,9 @@ public class ClomiPreferenceManager {
         return preferences.getBoolean(key, false);
     }
 
+    public boolean getBoolean(String key, boolean defaultValue) {
+        return preferences.getBoolean(key, defaultValue);
+    }
     public void remove(String key) {
         editor.remove(key);
         editor.apply();

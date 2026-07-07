@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardAI"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    app:cardBackgroundColor="@color/card"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🤖 AI Wellness Assistant"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Get personalized wellness tips, habit suggestions and daily motivation powered by AI."
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUnlockAI"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:text="Sign In to Unlock AI"
+            android:textAllCaps="false"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="14dp"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
