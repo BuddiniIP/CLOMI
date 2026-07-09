@@ -107,7 +107,9 @@
 
                         <TextView
                             android:text="This Week"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
                             android:id="@+id/tvWeek"
@@ -139,7 +141,9 @@
 
                         <TextView
                             android:text="This Month"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
                             android:id="@+id/tvMonth"
@@ -174,7 +178,9 @@
                     <TextView
                         android:text="🏆 Wellness Summary"
                         android:textStyle="bold"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:id="@+id/tvXP"
@@ -222,7 +228,9 @@
                     <TextView
                         android:text="🌱 Plant Companion"
                         android:textStyle="bold"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:id="@+id/tvPlant"
@@ -273,7 +281,9 @@
                     <TextView
                         android:text="🏅 Achievements"
                         android:textStyle="bold"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:layout_width="wrap_content"
