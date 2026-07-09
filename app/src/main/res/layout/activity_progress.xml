@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reports"
+                android:text="📊 Reports"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary"/>
@@ -43,8 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                app:cardCornerRadius="18dp"
-                app:cardBackgroundColor="@color/card">
+                app:cardBackgroundColor="@color/card"
+                app:cardCornerRadius="18dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -63,18 +63,20 @@
                         android:id="@+id/tvTodayProgress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:text="0%"
                         android:textStyle="bold"
-                        android:textSize="30sp"/>
+                        android:textSize="32sp"
+                        android:textColor="@color/primary"/>
 
                     <com.google.android.material.progressindicator.LinearProgressIndicator
                         android:id="@+id/progressToday"
                         android:layout_width="match_parent"
                         android:layout_height="8dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="16dp"
                         android:max="100"
-                        android:progress="0"/>
+                        android:progress="0"
+                        app:indicatorColor="@color/primary"/>
 
                 </LinearLayout>
 
@@ -93,8 +95,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="18dp"
-                    app:cardBackgroundColor="@color/card">
+                    app:cardBackgroundColor="@color/card"
+                    app:cardCornerRadius="18dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -104,8 +106,6 @@
                         android:padding="18dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="This Week"
                             android:textStyle="bold"/>
 
@@ -127,8 +127,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
-                    app:cardCornerRadius="18dp"
-                    app:cardBackgroundColor="@color/card">
+                    app:cardBackgroundColor="@color/card"
+                    app:cardCornerRadius="18dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -138,8 +138,6 @@
                         android:padding="18dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="This Month"
                             android:textStyle="bold"/>
 
@@ -158,14 +156,14 @@
 
             </LinearLayout>
 
-            <!-- XP -->
+            <!-- Wellness Summary -->
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                app:cardCornerRadius="18dp"
-                app:cardBackgroundColor="@color/card">
+                app:cardBackgroundColor="@color/card"
+                app:cardCornerRadius="18dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -174,27 +172,126 @@
                     android:padding="20dp">
 
                     <TextView
+                        android:text="🏆 Wellness Summary"
+                        android:textStyle="bold"
+                        android:textSize="18sp"/>
+
+                    <TextView
                         android:id="@+id/tvXP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
                         android:text="⭐ Total XP : 0"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/tvLevel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="🏅 Level : Beginner"
                         android:textSize="18sp"/>
 
                     <TextView
                         android:id="@+id/tvStreak"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginTop="12dp"
                         android:text="🔥 Current Streak : 0 Days"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Plant Companion -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                app:cardBackgroundColor="@color/card"
+                app:cardCornerRadius="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:text="🌱 Plant Companion"
+                        android:textStyle="bold"
                         android:textSize="18sp"/>
 
                     <TextView
                         android:id="@+id/tvPlant"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:text="🌱 Plant Level : Seed"
+                        android:layout_marginTop="16dp"
+                        android:text="🌰 Seed"
+                        android:textStyle="bold"
+                        android:textSize="24sp"/>
+
+                    <TextView
+                        android:id="@+id/tvPlantDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Complete daily habits to help your plant grow."
+                        android:textColor="@color/text_secondary"/>
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progressPlant"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_marginTop="18dp"
+                        android:max="100"
+                        android:progress="0"
+                        app:indicatorColor="@color/primary"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Achievements -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="@color/card"
+                app:cardCornerRadius="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:text="🏅 Achievements"
+                        android:textStyle="bold"
                         android:textSize="18sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="🥇 First Habit Completed"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="🔥 7 Day Streak"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="⭐ Earn 100 XP"/>
 
                 </LinearLayout>
 

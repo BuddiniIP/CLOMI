@@ -6,6 +6,10 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.clomi.activities.ai.AiAssistantActivity;
+import com.example.clomi.activities.period.PeriodTrackerActivity;
+import com.example.clomi.activities.habits.CreateHabitActivity;
+import com.example.clomi.activities.habits.HabitDetailsActivity;
 
 import com.example.clomi.R;
 import com.example.clomi.activities.habits.HabitsActivity;
@@ -40,10 +44,13 @@ public class DashboardActivity extends AppCompatActivity {
     private TextView tvReminderSkin;
     private TextView tvReminderMood;
     private LinearProgressIndicator progressToday;
-
     private BottomNavigationView bottomNavigation;
-
     private ClomiPreferenceManager preferences;
+    private MaterialCardView cardWater;
+    private MaterialCardView cardSleep;
+    private MaterialCardView cardMood;
+    private MaterialCardView cardSkincare;
+    private MaterialButton btnAddHabit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +61,8 @@ public class DashboardActivity extends AppCompatActivity {
 
         initializeViews();
         loadDashboard();
+        setupClickListeners();
         setupBottomNavigation();
-        btnUnlockAI.setOnClickListener(v -> {
-        });
     }
 
     private void initializeViews() {
@@ -76,13 +82,15 @@ public class DashboardActivity extends AppCompatActivity {
         tvReminderSkin = findViewById(R.id.tvReminderSkin);
         tvReminderMood = findViewById(R.id.tvReminderMood);
         btnOpenPeriodTracker = findViewById(R.id.btnOpenPeriodTracker);
-
         tvProgressPercent = findViewById(R.id.tvProgressPercent);
         progressToday = findViewById(R.id.progressToday);
-
         tvXP = findViewById(R.id.tvXP);
-
         bottomNavigation = findViewById(R.id.bottomNavigation);
+        cardWater = findViewById(R.id.cardWater);
+        cardSleep = findViewById(R.id.cardSleep);
+        cardMood = findViewById(R.id.cardMood);
+        cardSkincare = findViewById(R.id.cardSkincare);
+        btnAddHabit = findViewById(R.id.btnAddHabit);
     }
 
     private void loadDashboard() {
@@ -140,7 +148,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         int progress = 0;
 
-        progressToday.setProgress(progress);
+        progressToday.setProgressCompat(progress, true);
         tvProgressPercent.setText(progress + "%");
 
         if (progress == 0) {
@@ -184,6 +192,43 @@ public class DashboardActivity extends AppCompatActivity {
         tvStreak.setText(streak + " Days");
     }
 
+    private void openHabit(String habitType) {
+
+        Intent intent = new Intent(
+                DashboardActivity.this,
+                HabitDetailsActivity.class
+        );
+
+        intent.putExtra("HABIT_TYPE", habitType);
+
+        startActivity(intent);
+    }
+
+    private void setupClickListeners() {
+
+        cardWater.setOnClickListener(v -> openHabit("Water"));
+
+        cardSleep.setOnClickListener(v -> openHabit("Sleep"));
+
+        cardMood.setOnClickListener(v -> openHabit("Mood"));
+
+        cardSkincare.setOnClickListener(v -> openHabit("Skincare"));
+
+        btnAddHabit.setOnClickListener(v ->
+                startActivity(new Intent(
+                        DashboardActivity.this,
+                        CreateHabitActivity.class)));
+
+        btnOpenPeriodTracker.setOnClickListener(v ->
+                startActivity(new Intent(
+                        DashboardActivity.this,
+                        PeriodTrackerActivity.class)));
+
+        btnUnlockAI.setOnClickListener(v ->
+                startActivity(new Intent(
+                        DashboardActivity.this,
+                        AiAssistantActivity.class)));
+    }
     private void setupBottomNavigation() {
 
         bottomNavigation.setSelectedItemId(R.id.navigation_home);

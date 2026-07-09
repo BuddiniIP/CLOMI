@@ -22,10 +22,14 @@ public class ProgressActivity extends AppCompatActivity {
     private TextView tvMonth;
 
     private TextView tvXP;
+    private TextView tvLevel;
     private TextView tvStreak;
+
     private TextView tvPlant;
+    private TextView tvPlantDescription;
 
     private LinearProgressIndicator progressToday;
+    private LinearProgressIndicator progressPlant;
 
     private BottomNavigationView bottomNavigation;
 
@@ -50,10 +54,14 @@ public class ProgressActivity extends AppCompatActivity {
         tvMonth = findViewById(R.id.tvMonth);
 
         tvXP = findViewById(R.id.tvXP);
+        tvLevel = findViewById(R.id.tvLevel);
         tvStreak = findViewById(R.id.tvStreak);
+
         tvPlant = findViewById(R.id.tvPlant);
+        tvPlantDescription = findViewById(R.id.tvPlantDescription);
 
         progressToday = findViewById(R.id.progressToday);
+        progressPlant = findViewById(R.id.progressPlant);
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
     }
@@ -62,41 +70,76 @@ public class ProgressActivity extends AppCompatActivity {
 
         int todayProgress = 0;
 
-        progressToday.setProgress(todayProgress);
+        int xp = preferences.getInt(
+                PreferenceKeys.XP,
+                0
+        );
+
+        int streak = preferences.getInt(
+                PreferenceKeys.STREAK,
+                0
+        );
+
+        progressToday.setProgressCompat(todayProgress, true);
 
         tvTodayProgress.setText(todayProgress + "%");
 
         tvWeek.setText("0%");
         tvMonth.setText("0%");
 
-        int xp = preferences.getInt(PreferenceKeys.XP);
-        int streak = preferences.getInt(PreferenceKeys.STREAK);
-
         tvXP.setText("⭐ Total XP : " + xp);
 
         tvStreak.setText("🔥 Current Streak : " + streak + " Days");
 
-        String plantLevel;
+        String level;
 
-        if (xp >= 300) {
+        if (xp >= 500) {
 
-            plantLevel = "Blooming 🌸";
+            level = "Expert";
 
-        } else if (xp >= 200) {
+        } else if (xp >= 300) {
 
-            plantLevel = "Growing 🌿";
+            level = "Advanced";
 
-        } else if (xp >= 100) {
+        } else if (xp >= 150) {
 
-            plantLevel = "Sprout 🌱";
+            level = "Intermediate";
 
         } else {
 
-            plantLevel = "Seed 🌰";
-
+            level = "Beginner";
         }
 
-        tvPlant.setText("🌱 Plant Level : " + plantLevel);
+        tvLevel.setText("🏆 Level : " + level);
+
+        if (xp >= 300) {
+
+            tvPlant.setText("🌸 Blooming");
+
+            progressPlant.setProgressCompat(100, true);
+
+        } else if (xp >= 200) {
+
+            tvPlant.setText("🌿 Growing");
+
+            progressPlant.setProgressCompat(75, true);
+
+        } else if (xp >= 100) {
+
+            tvPlant.setText("🌱 Sprout");
+
+            progressPlant.setProgressCompat(50, true);
+
+        } else {
+
+            tvPlant.setText("🌰 Seed");
+
+            progressPlant.setProgressCompat(25, true);
+        }
+
+        tvPlantDescription.setText(
+                "Complete daily habits to help your plant grow."
+        );
     }
 
     private void setupBottomNavigation() {
@@ -109,14 +152,24 @@ public class ProgressActivity extends AppCompatActivity {
 
             if (id == R.id.navigation_home) {
 
-                startActivity(new Intent(this, DashboardActivity.class));
+                startActivity(new Intent(
+                        this,
+                        DashboardActivity.class
+                ));
+
                 finish();
+
                 return true;
 
             } else if (id == R.id.navigation_habits) {
 
-                startActivity(new Intent(this, HabitsActivity.class));
+                startActivity(new Intent(
+                        this,
+                        HabitsActivity.class
+                ));
+
                 finish();
+
                 return true;
 
             } else if (id == R.id.navigation_reports) {
@@ -125,8 +178,13 @@ public class ProgressActivity extends AppCompatActivity {
 
             } else if (id == R.id.navigation_profile) {
 
-                startActivity(new Intent(this, ProfileActivity.class));
+                startActivity(new Intent(
+                        this,
+                        ProfileActivity.class
+                ));
+
                 finish();
+
                 return true;
             }
 

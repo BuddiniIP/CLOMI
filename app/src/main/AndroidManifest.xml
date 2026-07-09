@@ -11,46 +11,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CLOMI" >
         <activity
-            android:name=".activities.habits.SkincareHabitActivity"
+            android:name=".activities.ai.AiAssistantActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.habits.MoodHabitActivity"
+            android:name=".activities.period.PeriodTrackerActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.habits.SleepHabitActivity"
+            android:name=".activities.profile.LogoutActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.profile.ResetActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.habits.WaterHabitActivity"
-            android:exported="false" />
-        <activity
-            android:name=".adapters.ReportAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".adapters.ReminderAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".adapters.CustomHabitAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".adapters.HabitAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".activities.wellness.PeriodTrackerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.profile.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.habits.EditHabitActivity"
+            android:name=".activities.profile.PrivacyPolicyActivity"
             android:exported="false" />
         <activity
             android:name=".activities.habits.CreateHabitActivity"
             android:exported="false" />
         <activity
             android:name=".activities.habits.HabitDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.ai.AIAssistantActivity"
             android:exported="false" />
         <activity
             android:name=".activities.profile.AboutActivity"
@@ -60,12 +40,6 @@
             android:exported="false" />
         <activity
             android:name=".activities.profile.EditProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".manager.PlantManager"
-            android:exported="false" />
-        <activity
-            android:name=".activities.plant.PlantActivity"
             android:exported="false" />
         <activity
             android:name=".activities.habits.HabitsActivity"
@@ -78,9 +52,6 @@
             android:exported="false" />
         <activity
             android:name=".activities.dashboard.DashboardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".activities.onboarding.SplashActivity"
@@ -114,9 +85,6 @@
             android:exported="false" />
         <activity
             android:name=".activities.onboarding.WellnessSetupActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.onboarding.SetupCompleteActivity"
             android:exported="false" />
     </application>
 

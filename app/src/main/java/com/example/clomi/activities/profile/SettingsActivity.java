@@ -3,10 +3,12 @@ package com.example.clomi.activities.profile;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-
+import com.example.clomi.activities.profile.PrivacyPolicyActivity;
+import com.example.clomi.activities.profile.ResetActivity;
 import com.example.clomi.R;
 import com.example.clomi.preferences.ClomiPreferenceManager;
 import com.google.android.material.button.MaterialButton;
@@ -74,32 +76,23 @@ public class SettingsActivity extends AppCompatActivity {
 
         cardPrivacy.setOnClickListener(v ->
 
-                Toast.makeText(
-                        this,
-                        "Privacy Policy Coming Soon",
-                        Toast.LENGTH_SHORT
-                ).show());
+                startActivity(new Intent(
+                        SettingsActivity.this,
+                        PrivacyPolicyActivity.class
+                )));
 
         cardAbout.setOnClickListener(v ->
 
-                Toast.makeText(
-                        this,
-                        "CLOMI v1.0\nYour AI Wellness Companion",
-                        Toast.LENGTH_LONG
-                ).show());
+                startActivity(new Intent(
+                        SettingsActivity.this,
+                        AboutActivity.class
+                )));
 
-        btnReset.setOnClickListener(v -> {
+        btnReset.setOnClickListener(v ->
 
-            preferences.clear();
-
-            Toast.makeText(
-                    this,
-                    "App data has been reset.",
-                    Toast.LENGTH_SHORT
-            ).show();
-
-            finish();
-
-        });
+                startActivity(new Intent(
+                        SettingsActivity.this,
+                        ResetActivity.class
+                )));
     }
 }

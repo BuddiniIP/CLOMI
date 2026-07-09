@@ -1,70 +1,70 @@
 package com.example.clomi.activities.plant;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.clomi.R;
-import com.example.clomi.activities.dashboard.DashboardActivity;
-import com.example.clomi.activities.habits.HabitsActivity;
-import com.example.clomi.activities.profile.ProfileActivity;
-import com.example.clomi.activities.reports.ProgressActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.clomi.preferences.ClomiPreferenceManager;
+import com.example.clomi.preferences.PreferenceKeys;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 public class PlantActivity extends AppCompatActivity {
 
-    private BottomNavigationView bottomNavigation;
+    private TextView tvPlantStage;
+    private TextView tvPlantLevel;
+    private TextView tvHealth;
+    private TextView tvXP;
+    private TextView tvWaterCount;
+    private TextView tvSleepCount;
+
+    private LinearProgressIndicator progressPlant;
+
+    private ClomiPreferenceManager preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant);
 
-        bottomNavigation = findViewById(R.id.bottomNavigation);
+        preferences = new ClomiPreferenceManager(this);
 
-        setupBottomNavigation();
+        initializeViews();
+        loadPlantData();
     }
 
-    private void setupBottomNavigation() {
+    private void initializeViews() {
 
-        bottomNavigation.setSelectedItemId(R.id.navigation_plant);
+        tvPlantStage = findViewById(R.id.tvPlantStage);
+        tvPlantLevel = findViewById(R.id.tvPlantLevel);
+        tvHealth = findViewById(R.id.tvHealth);
+        tvXP = findViewById(R.id.tvXP);
+        tvWaterCount = findViewById(R.id.tvWaterCount);
+        tvSleepCount = findViewById(R.id.tvSleepCount);
 
-        bottomNavigation.setOnItemSelectedListener(item -> {
+        progressPlant = findViewById(R.id.progressPlant);
+    }
 
-            int id = item.getItemId();
+    private void loadPlantData() {
 
-            if (id == R.id.navigation_home) {
+        int xp = preferences.getInt(PreferenceKeys.XP, 0);
+        int level = preferences.getInt(PreferenceKeys.LEVEL, 1);
 
-                startActivity(new Intent(this, DashboardActivity.class));
-                finish();
-                return true;
+        tvPlantLevel.setText("Level " + level);
+        tvXP.setText("⭐ XP : " + xp);
 
-            } else if (id == R.id.navigation_habits) {
+        progressPlant.setProgress(Math.min(xp, 100));
 
-                startActivity(new Intent(this, HabitsActivity.class));
-                finish();
-                return true;
-
-            } else if (id == R.id.navigation_plant) {
-
-                return true;
-
-            } else if (id == R.id.navigation_reports) {
-
-                startActivity(new Intent(this, ProgressActivity.class));
-                finish();
-                return true;
-
-            } else if (id == R.id.navigation_profile) {
-
-                startActivity(new Intent(this, ProfileActivity.class));
-                finish();
-                return true;
-            }
-
-            return false;
-        });
-
+        if (level <= 1) {
+            tvPlantStage.setText("Seed 🌱");
+        } else if (level == 2) {
+            tvPlantStage.setText("Sprout 🌿");
+        } else if (level == 3) {
+            tvPlantStage.setText("Young Plant 🌳");
+        } else {
+            tvPlantStage.setText("Blooming 🌸");
+        }
     }
 }

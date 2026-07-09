@@ -12,83 +12,149 @@
         android:orientation="vertical"
         android:padding="24dp">
 
+        <!-- Back Button -->
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_media_previous"
+            app:tint="@color/text_primary"/>
+
+        <!-- Header -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Edit Profile"
+            android:textColor="@color/text_primary"
             android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary"/>
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Update your personal information."
-            android:textSize="15sp"
+            android:layout_marginTop="6dp"
+            android:text="Update your wellness information."
             android:textColor="@color/text_secondary"
-            android:layout_marginTop="6dp"/>
+            android:textSize="16sp"/>
 
-        <com.google.android.material.card.MaterialCardView
+        <!-- Name -->
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/card">
+            android:layout_marginTop="28dp"
+            android:hint="Full Name">
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Gender -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Gender"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rgGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbMale"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:text="Male"/>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Name">
+            <RadioButton
+                android:id="@+id/rbFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"/>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+        </RadioGroup>
 
-                </com.google.android.material.textfield.TextInputLayout>
+        <!-- Main Goal -->
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="Water Goal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Main Goal"
+            android:textStyle="bold"/>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etWaterGoal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-                </com.google.android.material.textfield.TextInputLayout>
+        <!-- Water Goal -->
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="Sleep Goal">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Water Goal">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etSleepGoal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etWaterGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-                </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <Button
-                    android:id="@+id/btnSave"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Save Changes"/>
+        <!-- Sleep Goal -->
 
-            </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Sleep Goal">
 
-        </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSleepGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Skin Type -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Skin Type"
+            android:textStyle="bold"/>
+
+        <Spinner
+            android:id="@+id/spSkinType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Save -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="24dp"
+            android:text="Save Changes"
+            android:textAllCaps="false"
+            android:textSize="17sp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="18dp"/>
 
     </LinearLayout>
 

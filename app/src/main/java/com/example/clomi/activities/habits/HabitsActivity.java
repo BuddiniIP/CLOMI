@@ -91,10 +91,7 @@ public class HabitsActivity extends AppCompatActivity {
 
             if (id == R.id.navigation_home) {
 
-                startActivity(new Intent(
-                        this,
-                        DashboardActivity.class));
-
+                startActivity(new Intent(this, DashboardActivity.class));
                 finish();
                 return true;
 
@@ -104,19 +101,13 @@ public class HabitsActivity extends AppCompatActivity {
 
             } else if (id == R.id.navigation_reports) {
 
-                startActivity(new Intent(
-                        this,
-                        ProgressActivity.class));
-
+                startActivity(new Intent(this, ProgressActivity.class));
                 finish();
                 return true;
 
             } else if (id == R.id.navigation_profile) {
 
-                startActivity(new Intent(
-                        this,
-                        ProfileActivity.class));
-
+                startActivity(new Intent(this, ProfileActivity.class));
                 finish();
                 return true;
             }

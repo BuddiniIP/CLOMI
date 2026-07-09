@@ -7,17 +7,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.clomi.R;
 
-public class AboutActivity extends AppCompatActivity {
+public class PrivacyPolicyActivity extends AppCompatActivity {
 
     private ImageButton btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_privacy_policy);
+
+        initializeViews();
+        setupListeners();
+    }
+
+    private void initializeViews() {
 
         btnBack = findViewById(R.id.btnBack);
 
+    }
+
+    private void setupListeners() {
+
         btnBack.setOnClickListener(v -> finish());
+
     }
 }

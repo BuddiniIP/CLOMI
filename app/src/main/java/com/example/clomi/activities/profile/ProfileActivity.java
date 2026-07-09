@@ -11,6 +11,8 @@ import com.example.clomi.R;
 import com.example.clomi.activities.dashboard.DashboardActivity;
 import com.example.clomi.activities.habits.HabitsActivity;
 import com.example.clomi.activities.reports.ProgressActivity;
+import com.example.clomi.activities.profile.AboutActivity;
+import com.example.clomi.activities.profile.LogoutActivity;
 import com.example.clomi.preferences.ClomiPreferenceManager;
 import com.example.clomi.preferences.PreferenceKeys;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -92,22 +94,27 @@ public class ProfileActivity extends AppCompatActivity {
     private void setupButtons() {
 
         btnEditProfile.setOnClickListener(v ->
-                Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show());
+                startActivity(new Intent(
+                        ProfileActivity.this,
+                        EditProfileActivity.class
+                ))
+        );
 
         btnSettings.setOnClickListener(v ->
                 startActivity(new Intent(this, SettingsActivity.class)));
 
         btnAbout.setOnClickListener(v ->
-                Toast.makeText(this, "CLOMI v1.0\nYour Wellness Companion", Toast.LENGTH_LONG).show());
+                startActivity(new Intent(
+                        ProfileActivity.this,
+                        AboutActivity.class
+                )));
 
-        btnLogout.setOnClickListener(v -> {
+        btnLogout.setOnClickListener(v ->
 
-            preferences.clear();
-
-            Intent intent = new Intent(this, DashboardActivity.class);
-            startActivity(intent);
-            finishAffinity();
-        });
+                startActivity(new Intent(
+                        ProfileActivity.this,
+                        LogoutActivity.class
+                )));
     }
 
     private void setupBottomNavigation() {
