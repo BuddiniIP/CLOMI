@@ -45,7 +45,7 @@ public class AboutYouActivity extends AppCompatActivity {
 
     private void saveUser() {
 
-        String name = etName.getText().toString().trim();
+        String name = etName.getText() != null ? etName.getText().toString().trim() : "";
 
         if (name.isEmpty()) {
 
@@ -63,6 +63,9 @@ public class AboutYouActivity extends AppCompatActivity {
                 PreferenceKeys.ONBOARDING_COMPLETED,
                 true
         );
+
+        // Sync the profile with the remote backend
+        com.example.clomi.manager.SyncManager.syncProfile(this);
 
         startActivity(new Intent(
                 AboutYouActivity.this,

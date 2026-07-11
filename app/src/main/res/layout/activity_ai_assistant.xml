@@ -112,25 +112,33 @@
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipWater"
                         style="@style/Widget.Material3.Chip.Assist"
-                        android:text="💧 Water"/>
+                        android:text="💧 Water"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipSleep"
                         style="@style/Widget.Material3.Chip.Assist"
                         android:layout_marginStart="8dp"
-                        android:text="😴 Sleep"/>
+                        android:text="😴 Sleep"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipSkin"
                         style="@style/Widget.Material3.Chip.Assist"
                         android:layout_marginStart="8dp"
-                        android:text="🌿 Skin Care"/>
+                        android:text="🌿 Skin Care"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipMotivation"
                         style="@style/Widget.Material3.Chip.Assist"
                         android:layout_marginStart="8dp"
-                        android:text="❤️ Motivation"/>
+                        android:text="❤️ Motivation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 

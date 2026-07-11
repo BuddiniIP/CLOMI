@@ -76,7 +76,9 @@
 
                     <TextView
                         android:text="›"
-                        android:textSize="28sp"/>
+                        android:textSize="28sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -111,7 +113,9 @@
 
                     <TextView
                         android:text="›"
-                        android:textSize="28sp"/>
+                        android:textSize="28sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -142,11 +146,14 @@
                         android:layout_weight="1"
                         android:text="😊 Mood"
                         android:textSize="18sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        />
 
                     <TextView
                         android:text="›"
-                        android:textSize="28sp"/>
+                        android:textSize="28sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -181,7 +188,9 @@
 
                     <TextView
                         android:text="›"
-                        android:textSize="28sp"/>
+                        android:textSize="28sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -225,7 +234,9 @@
 
                     <TextView
                         android:text="›"
-                        android:textSize="28sp"/>
+                        android:textSize="28sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
