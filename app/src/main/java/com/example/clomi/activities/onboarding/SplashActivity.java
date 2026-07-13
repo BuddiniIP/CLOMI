@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void initializeViews() {
 
-        TextView logo = findViewById(R.id.tvLogo);
+        ImageView logo = findViewById(R.id.imgLogo);
         TextView appName = findViewById(R.id.tvAppName);
         TextView tagline = findViewById(R.id.tvTagline);
         TextView loading = findViewById(R.id.tvLoading);

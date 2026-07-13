@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL = "http://192.168.1.3:8080/";
+    private static final String BASE_URL = "http://192.168.43.46:8080/";
     private static Retrofit retrofit = null;
 
     public static ClomiApiService getApiService() {
