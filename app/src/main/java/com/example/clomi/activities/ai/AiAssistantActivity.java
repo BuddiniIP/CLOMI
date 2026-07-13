@@ -7,8 +7,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.clomi.R;
+import com.example.clomi.network.ClomiApiService;
+import com.example.clomi.network.RetrofitClient;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputEditText;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AiAssistantActivity extends AppCompatActivity {
 
@@ -89,56 +95,25 @@ public class AiAssistantActivity extends AppCompatActivity {
         }
 
         tvUserMessage.setText(message);
-
-        String lower = message.toLowerCase();
-
-        if (lower.contains("water")) {
-
-            tvAiReply.setText(
-                    "💧 Based on your wellness journey, aim to drink about 2–2.5 liters of water today. Drink consistently throughout the day instead of all at once."
-            );
-
-        } else if (lower.contains("sleep")) {
-
-            tvAiReply.setText(
-                    "😴 Try to sleep 7–9 hours each night. Avoid screens 30 minutes before bedtime and keep a consistent sleep schedule."
-            );
-
-        } else if (lower.contains("skin")) {
-
-            tvAiReply.setText(
-                    "🌿 Cleanse your face twice a day, moisturize daily, and always apply sunscreen when going outdoors."
-            );
-
-        } else if (lower.contains("motivate")
-                || lower.contains("motivation")
-                || lower.contains("habit")) {
-
-            tvAiReply.setText(
-                    "❤️ Every healthy habit you complete brings you closer to your goals. Small daily actions create big long-term results. Keep going!"
-            );
-
-        } else if (lower.contains("exercise")
-                || lower.contains("workout")) {
-
-            tvAiReply.setText(
-                    "🏃 Try at least 30 minutes of moderate exercise today. Even a brisk walk can improve your physical and mental health."
-            );
-
-        } else if (lower.contains("food")
-                || lower.contains("diet")) {
-
-            tvAiReply.setText(
-                    "🥗 Eat balanced meals with vegetables, protein, fruits, and enough water. Avoid skipping meals whenever possible."
-            );
-
-        } else {
-
-            tvAiReply.setText(
-                    "🤖 Thank you for your question! CLOMI AI is currently running in offline mode. Future updates will provide more personalized AI-powered wellness advice."
-            );
-        }
-
+        tvAiReply.setText("Thinking...");
         etMessage.setText("");
+
+        ClomiApiService.ChatRequest request = new ClomiApiService.ChatRequest(message);
+
+        RetrofitClient.getApiService().getAiResponse(request).enqueue(new Callback<ClomiApiService.AiResponse>() {
+            @Override
+            public void onResponse(Call<ClomiApiService.AiResponse> call, Response<ClomiApiService.AiResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    tvAiReply.setText(response.body().getResponse());
+                } else {
+                    tvAiReply.setText("Sorry, something went wrong. Please try again.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ClomiApiService.AiResponse> call, Throwable t) {
+                tvAiReply.setText("🤖 Couldn't reach the AI assistant. Please check your connection and try again.");
+            }
+        });
     }
 }
