@@ -93,6 +93,18 @@
             app:backgroundTint="@color/primary"
             app:cornerRadius="18dp"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="14dp"
+            android:text="Delete Habit"
+            android:textAllCaps="false"
+            android:textColor="@color/text_primary"
+            app:strokeColor="@color/text_secondary"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            app:cornerRadius="18dp"/>
+
     </LinearLayout>
 
 </ScrollView>

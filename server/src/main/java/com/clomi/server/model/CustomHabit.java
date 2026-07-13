@@ -10,18 +10,30 @@ public class CustomHabit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;      // ← changed from username
+    private String username;
     private String habitName;
+    private String target;
     private String category;
-    private double targetValue;
+    private boolean reminderEnabled;
+    private String notes;
 
     public Long getId() { return id; }
-    public Long getUserId() { return userId; }
-    public void setUserId(Long userId) { this.userId = userId; }
+
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+
     public String getHabitName() { return habitName; }
     public void setHabitName(String habitName) { this.habitName = habitName; }
+
+    public String getTarget() { return target; }
+    public void setTarget(String target) { this.target = target; }
+
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
-    public double getTargetValue() { return targetValue; }
-    public void setTargetValue(double targetValue) { this.targetValue = targetValue; }
+
+    public boolean isReminderEnabled() { return reminderEnabled; }
+    public void setReminderEnabled(boolean reminderEnabled) { this.reminderEnabled = reminderEnabled; }
+
+    public String getNotes() { return notes; }
+    public void setNotes(String notes) { this.notes = notes; }
 }

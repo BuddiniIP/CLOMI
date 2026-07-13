@@ -12,6 +12,10 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.example.clomi.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.example.clomi.db.ClomiDatabase;
+import com.example.clomi.model.CustomHabit;
+import com.example.clomi.preferences.ClomiPreferenceManager;
+import com.example.clomi.preferences.PreferenceKeys;
 
 public class CreateHabitActivity extends AppCompatActivity {
 
@@ -85,31 +89,38 @@ public class CreateHabitActivity extends AppCompatActivity {
         String target = etTarget.getText().toString().trim();
 
         if (habitName.isEmpty()) {
-
             etHabitName.setError("Enter habit name");
             return;
         }
 
         if (target.isEmpty()) {
-
             etTarget.setError("Enter daily target");
             return;
         }
 
         String category = spCategory.getSelectedItem().toString();
-
         boolean reminderEnabled = switchReminder.isChecked();
-
         String notes = etNotes.getText().toString().trim();
 
-        // Database implementation will be added tomorrow
+        ClomiPreferenceManager preferences = new ClomiPreferenceManager(this);
+        String username = preferences.getString(PreferenceKeys.USER_NAME, "");
 
-        Toast.makeText(
-                this,
-                "Habit created successfully!",
-                Toast.LENGTH_SHORT
-        ).show();
+        CustomHabit habit = new CustomHabit(
+                username,
+                habitName,
+                target,
+                category,
+                reminderEnabled,
+                notes
 
+
+
+        );
+
+        ClomiDatabase.getInstance(this).customHabitDao().insertOrUpdate(habit);
+
+        Toast.makeText(this, "Habit created successfully!", Toast.LENGTH_SHORT).show();
         finish();
+
     }
 }

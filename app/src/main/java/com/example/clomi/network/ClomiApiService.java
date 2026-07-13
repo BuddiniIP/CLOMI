@@ -8,6 +8,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -42,6 +43,8 @@ public interface ClomiApiService {
     @POST("api/ai/chat")
     Call<AiResponse> getAiResponse(@Body ChatRequest request);
 
+    @DELETE("api/custom-habits/{username}/{habitName}")
+    Call<Void> deleteCustomHabit(@Path("username") String username, @Path("habitName") String habitName);
     class ChatRequest {
         String message;
         public ChatRequest(String message) { this.message = message; }
