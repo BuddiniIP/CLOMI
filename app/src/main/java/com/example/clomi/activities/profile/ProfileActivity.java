@@ -22,7 +22,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     private TextView tvName;
     private TextView tvGender;
-    private TextView tvAge;
     private TextView tvGoal;
     private TextView tvWater;
     private TextView tvSleep;
@@ -54,7 +53,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         tvName = findViewById(R.id.tvName);
         tvGender = findViewById(R.id.tvGender);
-        tvAge = findViewById(R.id.tvAge);
         tvGoal = findViewById(R.id.tvGoal);
         tvWater = findViewById(R.id.tvWater);
         tvSleep = findViewById(R.id.tvSleep);
