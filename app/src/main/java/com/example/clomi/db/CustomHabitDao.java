@@ -28,4 +28,7 @@ public interface CustomHabitDao {
 
     @Query("DELETE FROM custom_habits WHERE username = :username")
     void clearCustomHabits(String username);
+
+    @Query("SELECT * FROM custom_habits WHERE username = :username AND reminderEnabled = 1")
+    List<CustomHabit> getReminderHabits(String username);
 }

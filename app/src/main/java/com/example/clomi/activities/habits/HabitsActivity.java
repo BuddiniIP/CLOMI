@@ -61,7 +61,7 @@ public class HabitsActivity extends AppCompatActivity {
         cardCustomHabits.setOnClickListener(v ->
                 startActivity(new Intent(
                         HabitsActivity.this,
-                        CreateHabitActivity.class)));
+                        CustomHabitListActivity.class)));
 
         btnAddHabit.setOnClickListener(v ->
                 startActivity(new Intent(

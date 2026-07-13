@@ -62,6 +62,7 @@ public class HabitDetailsActivity extends AppCompatActivity {
         tvProgress = findViewById(R.id.tvProgress);
 
         btnComplete = findViewById(R.id.btnComplete);
+        findViewById(R.id.btnDelete).setVisibility(android.view.View.GONE);
     }
 
     private void loadHabit() {

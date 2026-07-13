@@ -48,6 +48,10 @@
             android:name=".activities.habits.HabitsActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.habits.CustomHabitListActivity" />
+        <activity
+            android:name=".activities.habits.CustomHabitDetailsActivity" />
+        <activity
             android:name=".activities.profile.ProfileActivity"
             android:exported="false" />
         <activity

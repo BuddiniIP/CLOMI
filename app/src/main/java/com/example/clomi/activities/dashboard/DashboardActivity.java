@@ -3,6 +3,8 @@ package com.example.clomi.activities.dashboard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +12,15 @@ import com.example.clomi.activities.ai.AiAssistantActivity;
 import com.example.clomi.activities.period.PeriodTrackerActivity;
 import com.example.clomi.activities.habits.CreateHabitActivity;
 import com.example.clomi.activities.habits.HabitDetailsActivity;
+import com.example.clomi.activities.habits.CustomHabitDetailsActivity;
 
 import com.example.clomi.R;
 import com.example.clomi.activities.habits.HabitsActivity;
 import com.example.clomi.activities.profile.ProfileActivity;
 import com.example.clomi.activities.reports.ProgressActivity;
+import com.example.clomi.adapters.CustomHabitAdapter;
+import com.example.clomi.db.ClomiDatabase;
+import com.example.clomi.model.CustomHabit;
 import com.example.clomi.preferences.ClomiPreferenceManager;
 import com.example.clomi.preferences.PreferenceKeys;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,6 +29,7 @@ import android.view.View;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.button.MaterialButton;
 import java.util.Calendar;
+import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -51,6 +58,8 @@ public class DashboardActivity extends AppCompatActivity {
     private MaterialCardView cardMood;
     private MaterialCardView cardSkincare;
     private MaterialButton btnAddHabit;
+    private RecyclerView rvTodayReminders;
+    private TextView tvNoCustomReminders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +100,23 @@ public class DashboardActivity extends AppCompatActivity {
         cardMood = findViewById(R.id.cardMood);
         cardSkincare = findViewById(R.id.cardSkincare);
         btnAddHabit = findViewById(R.id.btnAddHabit);
+        rvTodayReminders = findViewById(R.id.rvTodayReminders);
+        tvNoCustomReminders = findViewById(R.id.tvNoCustomReminders);
     }
 
+    private void loadCustomHabits() {
+        String username = preferences.getString(PreferenceKeys.USER_NAME, "");
+        List<CustomHabit> habits = ClomiDatabase.getInstance(this)
+                .customHabitDao()
+                .getCustomHabits(username);
+
+        rvCustomHabits.setLayoutManager(new LinearLayoutManager(this));
+        rvCustomHabits.setAdapter(new CustomHabitAdapter(habits, habit -> {
+            Intent intent = new Intent(DashboardActivity.this, CustomHabitDetailsActivity.class);
+            intent.putExtra("HABIT_NAME", habit.getHabitName());
+            startActivity(intent);
+        }));
+    }
     private void loadDashboard() {
 
         String name = preferences.getString(
@@ -190,6 +214,9 @@ public class DashboardActivity extends AppCompatActivity {
         tvXP.setText(xp + " XP");
 
         tvStreak.setText(streak + " Days");
+
+        loadCustomHabits();
+        loadTodayReminders();
     }
 
     private void openHabit(String habitType) {
@@ -202,6 +229,28 @@ public class DashboardActivity extends AppCompatActivity {
         intent.putExtra("HABIT_TYPE", habitType);
 
         startActivity(intent);
+    }
+    private void loadTodayReminders() {
+        String username = preferences.getString(PreferenceKeys.USER_NAME, "");
+        List<CustomHabit> reminderHabits = ClomiDatabase.getInstance(this)
+                .customHabitDao()
+                .getReminderHabits(username);
+
+        if (reminderHabits == null || reminderHabits.isEmpty()) {
+            tvNoCustomReminders.setVisibility(View.VISIBLE);
+            rvTodayReminders.setVisibility(View.GONE);
+            return;
+        }
+
+        tvNoCustomReminders.setVisibility(View.GONE);
+        rvTodayReminders.setVisibility(View.VISIBLE);
+
+        rvTodayReminders.setLayoutManager(new LinearLayoutManager(this));
+        rvTodayReminders.setAdapter(new CustomHabitAdapter(reminderHabits, habit -> {
+            Intent intent = new Intent(DashboardActivity.this, CustomHabitDetailsActivity.class);
+            intent.putExtra("HABIT_NAME", habit.getHabitName());
+            startActivity(intent);
+        }));
     }
 
     private void setupClickListeners() {
@@ -268,5 +317,7 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         loadDashboard();
+        com.example.clomi.manager.SyncManager.performFullSync(this);
     }
+
 }
